@@ -1,0 +1,6 @@
+:root {
+  --color-bg-gradient: linear-gradient(90deg, #ae0001, #ae0001);
+  --btn-primary: #4aa28a;
+  --color-text-primary: #000;
+  --color-text-secondary: #ae0001;
+}
