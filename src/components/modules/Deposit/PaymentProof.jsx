@@ -242,7 +242,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
               <div className="w-full relative ">
                 <input
                   onChange={handleUTRChange}
-                  className="block w-full focus:outline-none border-[1px]  px-3 py-2.5 rounded-[4px]  placeholder: font-medium text-base border-quinary focus:border-ternary"
+                  className="block w-full focus:outline-none border-[1px]  px-3 py-2.5 rounded-[4px]  placeholder: font-medium text-base border-quinary focus:border-ternary bg-transparent"
                   placeholder={
                     tabs === "usdt" || tabs === "usdt_bep20"
                       ? "Enter Hash code"

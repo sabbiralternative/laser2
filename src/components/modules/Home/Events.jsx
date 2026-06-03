@@ -57,7 +57,6 @@ const Events = () => {
                         data-v-b7f33f7c
                       />
                       <a
-                        href="/Markets/5379100/35670181"
                         className="flex items-center justify-between w-[calc(100%-1.75rem)] flex-1 h-[3.125rem]"
                         data-v-b7f33f7c
                       >

@@ -85,10 +85,10 @@ const Complaint = ({ setComplaintId, method, complaintId }) => {
                 <div className=" uppercase text-[10px] md:text-xs lg:text-sm ml-1">
                   Complaint
                 </div>
-                <div className="flex w-full items-center py-3.5 bg-auth rounded-lg border">
+                <div className="flex w-full items-center py-3.5  rounded-lg border">
                   <textarea
                     {...register("message", { required: true })}
-                    className="px-2 block w-full focus:outline-none w-full  bg-auth text-text_Ternary pr-2 text-sm xs:text-md"
+                    className="px-2 block w-full focus:outline-none w-full   text-text_Ternary pr-2 text-sm xs:text-md"
                     placeholder="Write your complaint"
                   />
                   <span className="h-fit"> </span>

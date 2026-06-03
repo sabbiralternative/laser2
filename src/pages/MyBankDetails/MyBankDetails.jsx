@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-import { useNavigate } from "react-router-dom";
 import { useBankAccountQuery } from "../../hooks/bankAccount";
 import Swal from "sweetalert2";
 import { AxiosSecure } from "../../lib/AxiosSecure";
@@ -16,7 +14,7 @@ const MyBankDetails = () => {
   const [showUSDTModal, setShowUSDTModal] = useState(false);
   const [showDetails, setShowDetails] = useState(null);
   const [tab, setTab] = useState(1);
-  const navigate = useNavigate();
+
   const {
     data: bankData,
     refetch: refetchBankData,
@@ -89,7 +87,7 @@ const MyBankDetails = () => {
   };
 
   return (
-    <div className="flex-1 flex white bg-gray1">
+    <div className="flex-1 flex white mt-16 lg:mt-0 mt-16 lg:mt-0">
       {showAddBank && (
         <CreateBankAccount
           refetchBankAccounts={refetchBankData}
@@ -106,37 +104,6 @@ const MyBankDetails = () => {
       <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full">
-            <div
-              onClick={() => navigate(-1)}
-              className="lg:hidden flex flex-col w-fit cursor-pointer"
-            >
-              <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
-                <div className="app-bg flex-row w-full h-full flex">
-                  <div className="w-[34px] h-full flex items-center justify-center">
-                    <button
-                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
-                      type="button"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="7"
-                        height="12"
-                        viewBox="0 0 7 12"
-                        fill="var(--color-iconsColor)"
-                      >
-                        <path
-                          d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
-                          fill="var(--color-iconsColor)"
-                        ></path>
-                      </svg>
-                    </button>
-                  </div>
-                  <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary  font-bold text-[16px] leading-5">
-                    <span>My Bank Details</span>
-                  </span>
-                </div>
-              </div>
-            </div>
             <div className="no-scrollbar h-full overflow-y-auto w-full mt-2">
               <div className="px-2 w-full">
                 <div className="flex flex-row items-center justify-start gap-6 relative">
@@ -213,7 +180,7 @@ const MyBankDetails = () => {
                       <div
                         style={{
                           marginTop: "10px",
-                          background: "white",
+                          background: "var(--top-menu)",
                           padding: "10px",
                           cursor: "pointer",
                           borderTopLeftRadius: "10px",

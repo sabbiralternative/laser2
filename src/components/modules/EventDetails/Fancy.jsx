@@ -8,9 +8,9 @@ import {
   setRunnerId,
 } from "../../../redux/features/events/eventSlice";
 
-import BetSlip from "./BetSlip";
 import toast from "react-hot-toast";
 import Ladder from "../../modals/Ladder/Ladder";
+import MobileBetSlip from "./MobileBetSlip";
 
 export const Fancy = ({ data }) => {
   const fancyData = data?.filter(
@@ -139,162 +139,96 @@ export const Fancy = ({ data }) => {
         />
       )}
       {fancyData?.length > 0 && (
-        <div className="relative flex flex-col w-full">
-          <div className="flex flex-col gap-5">
-            <div className="w-full">
-              <table className="w-full bg-white">
-                <thead>
-                  <tr className="h-[24px] text-xs font-bold border border-slate-400 bg-slate-300">
-                    <th className="w-[60%] text-start capitalize px-2">
+        <div
+          className="block relative w-full m-auto font-cera-round-pro text-site-color mt-[0.938rem]"
+          data-v-5b111243
+          data-v-8e891727
+        >
+          <div className data-v-5b111243>
+            <div className="block py-0 px-0" data-v-5b111243>
+              <h5
+                className="p-0 text-sm leading-5 font-medium market-title"
+                data-v-5b111243
+              >
+                <div
+                  className="flex justify-between items-center mb-1 bg-bg-bets-header p-[5px]"
+                  data-v-5b111243
+                >
+                  <span
+                    className="ml-1 flex flex-col font-medium"
+                    data-v-5b111243
+                  >
+                    <span className="font-bold" data-v-5b111243>
                       Fancy
-                    </th>
-                    <th className="w-[20%] md:w-[10%]">
-                      <div className="hidden md:flex items-center justify-center">
-                        No
-                      </div>
-                      <div className="block md:hidden items-center justify-center">
-                        NO
-                      </div>
-                    </th>
-                    <th className="w-[20%] md:w-[10%]">
-                      <div className="hidden md:flex items-center justify-center">
-                        Yes
-                      </div>
-                      <div className="block md:hidden items-center justify-center">
-                        Yes
-                      </div>
-                    </th>
-                    <th className="hidden md:table-cell md:w-[20%] text-[12px] font-sans font-[700] " />
-                  </tr>
-                </thead>
-                <tbody className="w-full">
-                  {fancyData?.map((game) => {
-                    const pnl = pnlBySelection?.find(
-                      (pnl) => pnl?.MarketId === game?.id,
-                    );
+                    </span>
+                  </span>
+                </div>
+                <div className="flex justify-between items-end" data-v-5b111243>
+                  <span
+                    className="text-[0.625rem] py-1 text-start text-card-description ml-1"
+                    data-v-5b111243
+                  >
+                    <span data-v-5b111243>Min: 100</span>
+                    <span className="space-x-1 mr-1" data-v-5b111243 />
+                    <span data-v-5b111243>Max: 100k</span>
+                    <span className="space-x-1" data-v-5b111243 />
+                  </span>
+                  <div
+                    className="flex gap-[0.313rem] text-[0.757rem] mr-2"
+                    data-v-5b111243
+                  >
+                    <div
+                      className="back h-6 leading-6 capitalize w-[3.488rem] text-center text-primary-bg bg-back rounded"
+                      data-v-5b111243
+                    >
+                      <span data-v-5b111243>Yes</span>
+                    </div>
+                    <div
+                      className="lay h-6 leading-6 capitalize w-[3.488rem] text-center text-primary-bg bg-lay rounded"
+                      data-v-5b111243
+                    >
+                      <span data-v-5b111243>No</span>
+                    </div>
+                  </div>
+                </div>
+              </h5>
+              <div data-v-5b111243>
+                <div className data-v-5b111243>
+                  <div className="min-h-[3rem] relative" data-v-5b111243>
+                    {fancyData?.map((game) => {
+                      const pnl = pnlBySelection?.find(
+                        (pnl) => pnl?.MarketId === game?.id,
+                      );
 
-                    return (
-                      <Fragment key={game?.id}>
-                        <tr className="border-b border-b-gray13 text-xs h-[43px] relative">
-                          <td className="px-2 text-[14px] w-[60%] h-[43px]">
-                            <span className=" text-[12px] font-[900] flex justify-between">
-                              <span>{game?.name}</span>
-
-                              {pnl ? (
-                                <span
-                                  onClick={() =>
-                                    handleGetLadder(pnl, game?.name)
-                                  }
-                                  className="col-span-2 md:col-span-2 flex flex-row items-center justify-end"
-                                >
-                                  <div className="opacity-100 cursor-pointer">
-                                    <svg
-                                      height="18"
-                                      width="18"
-                                      viewBox="0 0 16 16"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <g id="63d691358b4e4026f6539708_stairs 1">
-                                        <path
-                                          id="Vector"
-                                          d="M5.21875 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_2"
-                                          d="M5.21875 5.48047H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_3"
-                                          d="M5.21875 8.13672H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_4"
-                                          d="M5.21875 11.1055H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_5"
-                                          d="M10.5312 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                      </g>
-                                    </svg>
-                                  </div>
-                                </span>
-                              ) : (
-                                <span className="col-span-2 md:col-span-2 flex flex-row items-center justify-end">
-                                  <div className="opacity-50 cursor-not-allowed">
-                                    <svg
-                                      height="18"
-                                      width="18"
-                                      viewBox="0 0 16 16"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <g id="63d691358b4e4026f6539708_stairs 1">
-                                        <path
-                                          id="Vector"
-                                          d="M5.21875 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_2"
-                                          d="M5.21875 5.48047H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_3"
-                                          d="M5.21875 8.13672H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_4"
-                                          d="M5.21875 11.1055H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_5"
-                                          d="M10.5312 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                      </g>
-                                    </svg>
-                                  </div>
-                                </span>
-                              )}
-                            </span>
-                            {pnl && (
-                              <div
-                                className={`  ${
-                                  pnl?.pnl > 0
-                                    ? "text-green-500"
-                                    : "text-red-500"
-                                }`}
-                              >
-                                {pnl?.pnl}
-                              </div>
-                            )}
-
-                            <div className="text-left text-[10px] md:hidden">
-                              <span className="font-extrabold text-blue-700">
-                                Min Max{" "}
-                              </span>
-                              <span className="text-gray-700 font-bold">
-                                {game?.minLiabilityPerBet}-
-                                {game?.maxLiabilityPerBet}
-                              </span>
-                            </div>
-                          </td>
-                          <td
-                            colSpan={2}
-                            className="relative w-[40%] md:w-[20%] h-[43px] p-0"
+                      return (
+                        <Fragment key={game?.id}>
+                          <div
+                            className="flex w-full px-[0.525rem] mb-1 relative shadow-[0px_5px_116.6px_rgba(0,_0,_0,_0.05)] rounded-[0.625rem] bg-getitem-bg h-[4.1rem] text-txt-black"
+                            data-v-ee2b582e
                           >
-                            <div className="flex w-full h-full">
+                            <div
+                              className="flex flex-col justify-center gap-2 w-3/5 pl-2"
+                              data-v-ee2b582e
+                            >
                               <div
+                                className="text-[0.9rem] font-semibold min-w-0 truncate"
+                                data-v-ee2b582e
+                              >
+                                {game?.name}
+                              </div>
+                              <div
+                                className="text-sm font-normal"
+                                data-v-ee2b582e
+                              >
+                                <span className data-v-ee2b582e></span>
+                              </div>
+                            </div>
+                            <div
+                              className="flex gap-[0.313rem] items-center float-right w-2/5 relative text-black"
+                              dir="rtl"
+                              data-v-ee2b582e
+                            >
+                              <a
                                 onClick={() =>
                                   handleBetSlip(
                                     "lay",
@@ -304,23 +238,24 @@ export const Fancy = ({ data }) => {
                                     game?.runners?.[0]?.lay?.[0]?.price,
                                   )
                                 }
-                                className="w-1/2 text-center h-full "
+                                className="flex flex-col cursor-pointer text-center justify-center w-[3.488rem] h-[3.188rem] bg-lay rounded-md"
+                                data-v-ee2b582e
                               >
                                 <div
-                                  className="w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-pink1"
+                                  className="text-sm font-bold"
+                                  data-v-ee2b582e
+                                  style={{ fontSize: "0.875rem" }}
                                 >
-                                  <div className="flex flex-col justify-center items-center gap-1  undefined ">
-                                    <div className="text-[11px] text-black font-[700]">
-                                      {game?.runners?.[0]?.lay?.[0]?.line}
-                                    </div>
-                                    <div className="text-[10px] text-[#292929] leading-none ">
-                                      {game?.runners?.[0]?.lay?.[0]?.price}
-                                    </div>
-                                  </div>
+                                  {game?.runners?.[0]?.lay?.[0]?.line}
                                 </div>
-                              </div>
-                              <div
+                                <div
+                                  className="text-[0.725rem] w-[3rem] truncate mx-auto"
+                                  data-v-ee2b582e
+                                >
+                                  {game?.runners?.[0]?.lay?.[0]?.price}
+                                </div>
+                              </a>
+                              <a
                                 onClick={() =>
                                   handleBetSlip(
                                     "back",
@@ -330,47 +265,42 @@ export const Fancy = ({ data }) => {
                                     game?.runners?.[0]?.back?.[0]?.price,
                                   )
                                 }
-                                className="w-1/2 text-center h-full "
+                                className="flex flex-col cursor-pointer text-center justify-center w-[3.488rem] h-[3.188rem] bg-back rounded-md"
+                                data-v-ee2b582e
                               >
                                 <div
-                                  className="w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-blue13"
+                                  className="text-sm font-bold"
+                                  data-v-ee2b582e
+                                  style={{ fontSize: "0.875rem" }}
                                 >
-                                  <div className="flex flex-col justify-center items-center gap-1  undefined ">
-                                    <div className="text-[11px] text-black font-[700]">
-                                      {game?.runners?.[0]?.back?.[0]?.line}
-                                    </div>
-                                    <div className="text-[10px] text-[#292929] leading-none ">
-                                      {game?.runners?.[0]?.back?.[0]?.price}
-                                    </div>
-                                  </div>
+                                  {game?.runners?.[0]?.back?.[0]?.line}
                                 </div>
-                              </div>
+                                <div
+                                  className="text-[0.725rem] w-[3rem] truncate mx-auto"
+                                  data-v-ee2b582e
+                                >
+                                  {game?.runners?.[0]?.back?.[0]?.price}
+                                </div>
+                              </a>
+                              {game?.status === "SUSPENDED" && (
+                                <div
+                                  className="suspended-overlay text-xs min-w-[7.35rem] absolute text-[#cd5c5c] bg-[#dcdcdce8] h-[3.188rem] rounded-md text-center flex flex-col justify-center"
+                                  data-v-ee2b582e
+                                >
+                                  <p data-v-ee2b582e>SUSPENDED</p>
+                                </div>
+                              )}
                             </div>
-                            {game?.status !== "OPEN" && (
-                              <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-25 flex items-center justify-center text-white  font-sans text-[13px] z-10 pointer-events-none">
-                                {game?.status}
-                              </div>
-                            )}
-                          </td>
-                          <td className="hidden md:table-cell md:w-[20%] text-[9px] font-[700]">
-                            <div className="text-left font-bold pl-8">
-                              <div className="text-gray-400 font-medium capitalize">
-                                min/max{" "}
-                              </div>
-                              {game?.minLiabilityPerBet}/
-                              {game?.maxLiabilityPerBet}
-                            </div>
-                          </td>
-                        </tr>
-                        {game?.id === runnerId && (
-                          <BetSlip currentPlaceBetEvent={game} />
-                        )}
-                      </Fragment>
-                    );
-                  })}
-                </tbody>
-              </table>
+                          </div>
+                          {game?.id === runnerId && (
+                            <MobileBetSlip currentPlaceBetEvent={game} />
+                          )}
+                        </Fragment>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

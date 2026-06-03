@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Settings } from "../../../api";
 import { useLogo } from "../../../context/ApiProvider";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AppPopup from "./AppPopUp";
 import DownloadAPK from "../../modals/DownloadAPK/DownloadAPK";
 // import Notification from "./Notification";
@@ -19,6 +19,7 @@ import LoginButton from "./LoginButton";
 import RightDrawer from "./RightDrawer";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [showRightDrawer, setShowRightDrawer] = useState(false);
   const location = useLocation();
   const { logo } = useLogo();
@@ -89,6 +90,7 @@ const Header = () => {
                 <img src="/assets/Category.704feee9.svg" data-v-f86ae6b0 />
               </div>
               <img
+                onClick={() => navigate("/")}
                 src={logo}
                 style={{
                   height: "40px",

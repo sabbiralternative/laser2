@@ -19,8 +19,7 @@ import {
   handleDecreasePrice,
   handleIncreasePrice,
 } from "../../../utils/editBetSlipPrice";
-
-const BetSlip = ({ currentPlaceBetEvent }) => {
+const MobileBetSlip = ({ currentPlaceBetEvent }) => {
   const { closePopupForForever } = useSelector((state) => state.global);
   const [isCashOut, setIsCashOut] = useState(false);
   const [profit, setProfit] = useState(0);
@@ -211,45 +210,34 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
       dispatch(setStake(buttonValue + prevStake));
     }
   };
-
   return (
     <div
-      className="mt-2 md:mt-1 min-h-[19.688rem] bg-top-menu relative"
-      data-v-8e891727
+      className="md:hidden col-start-1 col-end-7 betslip relative"
+      data-v-ee2b582e
     >
-      <div
-        className="text-btn-primary flex justify-between p-4 mb-1 border-b border-card-border"
-        data-v-8e891727
-      >
-        <h3 className="text-base font-bold capitalize" data-v-8e891727>
-          Bet Place
-        </h3>
-        <div data-v-8e891727>
-          <div className="flex items-center justify-start" data-v-8e891727>
-            <div
-              className={`w-3 h-3 ${placeBetValues?.back ? "bg-blue-300" : "bg-red-300"} mr-2`}
-              data-v-8e891727
-            />
-            <div className="text-site-color font-semibold" data-v-8e891727>
-              {placeBetValues?.back ? "Back" : "Lay"}
+      {loading && (
+        <div className="absolute top-0 left-0 flex flex-col gap-1 items-center justify-center w-full h-full z-20 bg-black/30 backdrop-blur-[2px]">
+          <div className="relative h-[70px] w-[70px] flex items-center justify-center">
+            <div className="absolute text-lg text-white"></div>
+            <div className="h-[80%] w-[80%] border-4 border-white rounded-full border-dotted border-t-white border-b-oneClickLoadingSpinner border-x-oneClickLoadingSpinner animate-oneClickLoadingSpinnerAnimation" />
+          </div>
+          <div className="flex flex-col items-center justify-center text-white">
+            <div className="text-sm font-semibold">
+              Your bet is being processed...
             </div>
-            <h6 className="text-xs ml-2 text-card-description" data-v-8e891727>
-              {placeBetValues?.selectedBetName}
-            </h6>
+            <div className="text-xs text-suspendedBg">Please wait</div>
           </div>
         </div>
-      </div>
-
+      )}
       <div
-        className="openbetshow p-1 font-cera-pro relative px-2 py-3 shadow-[0px_5px_116.6px_rgba(0,_0,_0,_0.05)] rounded-t-none rounded-b-[0.625rem] overflow-hidden mb-3 text-black hidden md:block mt-3"
+        className={` ${placeBetValues?.back ? "bg-blue-100" : "bg-red-100"} openbetshow border border-card-border p-1 font-cera-pro relative px-2 py-3 shadow-[0px_5px_116.6px_rgba(0,_0,_0,_0.05)] rounded-t-none rounded-b-[0.625rem] overflow-hidden mb-3 text-black`}
         data-v-3334cc92
-        data-v-8e891727
+        data-v-ee2b582e
       >
         <div className="item-title truncate text-sm" data-v-3334cc92>
-          <span className="font-bold text-blue-900" data-v-3334cc92 />
+          <span className="font-bold text-red-900" data-v-3334cc92 />
         </div>
-
-        <div className="item item-blue" data-v-3334cc92>
+        <div className="item item-pink" data-v-3334cc92>
           <div className="grid grid-cols-2 gap-2 mb-2 mt-1" data-v-3334cc92>
             <div
               className="w-full flex flex-col items-center justify-center"
@@ -314,26 +302,17 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
                 )}
 
                 <input
+                  type="number"
                   onChange={(e) => {
                     dispatch(setPrice(e.target.value));
                     setIsCashOut(false);
                   }}
                   value={price}
-                  type="number"
                   className="w-full rounded-[1.875rem] bg-blue-cotton-ball border-search-icon-border border-[0.063rem] border-solid box-border h-[2.188rem] flex flex-row items-center justify-center py-[1.063rem] px-5 text-center text-sm text-site-color"
                   data-v-3334cc92
                 />
                 {!placeBetValues?.isWeak && (
                   <button
-                    onClick={() => {
-                      handleIncreasePrice(
-                        price,
-                        placeBetValues,
-                        dispatch,
-                        setPrice,
-                      );
-                      setIsCashOut(false);
-                    }}
                     className="absolute w-[2.188rem] h-[2.188rem] text-white top-0 rounded-[1.875rem] bg-slate-600 right-0"
                     data-v-3334cc92
                   >
@@ -390,9 +369,9 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
                   dispatch(setStake(e.target.value));
                   setIsCashOut(false);
                 }}
+                type="number"
                 placeholder={`Max bet: ${placeBetValues?.maxLiabilityPerBet}`}
                 value={stake || ""}
-                type="text"
                 className="w-full rounded-[1.875rem] bg-blue-cotton-ball border-card-border border-[0.063rem] border-solid box-border h-[2.188rem] flex flex-row items-center justify-center py-[1.063rem] px-5 text-center text-sm text-site-color"
                 data-v-3334cc92
               />
@@ -406,7 +385,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
               <div
                 key={i}
                 onClick={() => handleButtonValue(button?.value)}
-                className="border border-card-description rounded-[2.813rem] text-xs p-2.5 text-center cursor-pointer"
+                className="btn-values rounded-[2.813rem] text-xs p-2.5 text-center cursor-pointer"
                 data-v-3334cc92
               >
                 <span data-v-3334cc92>+</span>
@@ -451,22 +430,8 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
           </div>
         </div>
       </div>
-      {loading && (
-        <div className="absolute top-0 left-0 flex flex-col gap-1 items-center justify-center w-full h-full z-20 bg-black/30 backdrop-blur-[2px]">
-          <div className="relative h-[70px] w-[70px] flex items-center justify-center">
-            <div className="absolute text-lg text-white"></div>
-            <div className="h-[80%] w-[80%] border-4 border-white rounded-full border-dotted border-t-white border-b-oneClickLoadingSpinner border-x-oneClickLoadingSpinner animate-oneClickLoadingSpinnerAnimation" />
-          </div>
-          <div className="flex flex-col items-center justify-center text-white">
-            <div className="text-sm font-semibold">
-              Your bet is being processed...
-            </div>
-            <div className="text-xs text-suspendedBg">Please wait</div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default BetSlip;
+export default MobileBetSlip;

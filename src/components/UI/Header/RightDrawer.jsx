@@ -1,13 +1,19 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import useBalance from "../../../hooks/balance";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../../redux/features/auth/authSlice";
+import useCloseModalClickOutside from "../../../hooks/closeModal";
+import { Settings } from "../../../api";
 
 const RightDrawer = ({ setShowRightDrawer }) => {
+  const ref = useRef();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { data } = useBalance();
+
+  useCloseModalClickOutside(ref, () => setShowRightDrawer(false));
+
   return (
     <Fragment>
       <div
@@ -15,6 +21,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
         data-v-e9e2d909=""
       ></div>
       <div
+        ref={ref}
         className="_flex _flex-col _items-start _flex-1 z-[60] fixed right-0 top-0 bottom-0 h-full w-[270px] text-base font-cera-round-pro list-none bg-top-menu shadow menu-account overflow-y-auto max-h-screen"
         data-v-e9e2d909
         style={{}}
@@ -91,7 +98,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
           <li data-v-e9e2d909>
             <Link
               onClick={() => setShowRightDrawer(false)}
-              to="/account-cash-statement"
+              to="/deposit"
               className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
               data-v-e9e2d909
             >
@@ -100,28 +107,58 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/file.99c55217.svg"
                 data-v-e9e2d909
               />
-              Account Statement
+              Deposit
             </Link>
           </li>
           <li data-v-e9e2d909>
             <Link
               onClick={() => setShowRightDrawer(false)}
-              to="/profitloss"
+              to="/withdraw"
               className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
               data-v-e9e2d909
             >
               <img
                 className="w-[1.875rem] h-[1.875rem]"
-                src="/assets/Favorite.f4874cce.svg"
+                src="/assets/file.99c55217.svg"
                 data-v-e9e2d909
-              />{" "}
-              Profit Loss Report
+              />
+              Withdraw
             </Link>
           </li>
           <li data-v-e9e2d909>
             <Link
               onClick={() => setShowRightDrawer(false)}
-              to="/bet-history"
+              to="/deposit-report"
+              className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+              data-v-e9e2d909
+            >
+              <img
+                className="w-[1.875rem] h-[1.875rem]"
+                src="/assets/file.99c55217.svg"
+                data-v-e9e2d909
+              />
+              Deposit Report
+            </Link>
+          </li>
+          <li data-v-e9e2d909>
+            <Link
+              onClick={() => setShowRightDrawer(false)}
+              to="/withdraw-report"
+              className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+              data-v-e9e2d909
+            >
+              <img
+                className="w-[1.875rem] h-[1.875rem]"
+                src="/assets/file.99c55217.svg"
+                data-v-e9e2d909
+              />
+              Withdraw Report
+            </Link>
+          </li>
+          <li data-v-e9e2d909>
+            <Link
+              onClick={() => setShowRightDrawer(false)}
+              to="/open-bets"
               className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
               data-v-e9e2d909
             >
@@ -130,13 +167,29 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/histry.7f697b93.svg"
                 data-v-e9e2d909
               />{" "}
-              Bet History
+              Open Bets
             </Link>
           </li>
           <li data-v-e9e2d909>
             <Link
               onClick={() => setShowRightDrawer(false)}
-              to="/current-bet"
+              to="/betting-profit-loss"
+              className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+              data-v-e9e2d909
+            >
+              <img
+                className="w-[1.875rem] h-[1.875rem]"
+                src="/assets/Favorite.f4874cce.svg"
+                data-v-e9e2d909
+              />{" "}
+              Betting Profit & Loss
+            </Link>
+          </li>
+
+          <li data-v-e9e2d909>
+            <Link
+              onClick={() => setShowRightDrawer(false)}
+              to="/my-bank-details"
               className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
               data-v-e9e2d909
             >
@@ -145,9 +198,27 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/casino.5ffa54af.svg"
                 data-v-e9e2d909
               />{" "}
-              My Bets
+              My Bank Details
             </Link>
           </li>
+          {Settings.referral && (
+            <li data-v-e9e2d909>
+              <Link
+                onClick={() => setShowRightDrawer(false)}
+                to="/affiliate"
+                className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+                data-v-e9e2d909
+              >
+                <img
+                  className="w-[1.875rem] h-[1.875rem]"
+                  src="/assets/casino.5ffa54af.svg"
+                  data-v-e9e2d909
+                />{" "}
+                Affiliate
+              </Link>
+            </li>
+          )}
+
           <li data-v-e9e2d909>
             <Link
               onClick={() => setShowRightDrawer(false)}

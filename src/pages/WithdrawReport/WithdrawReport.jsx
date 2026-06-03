@@ -48,7 +48,7 @@ const WithdrawReport = () => {
   };
 
   return (
-    <div className="flex-1 flex white bg-gray1">
+    <div className="flex-1 flex white mt-10 lg:mt-0">
       {complaintId && (
         <Complaint setComplaintId={setComplaintId} method="withdraw" />
       )}

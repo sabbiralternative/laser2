@@ -186,7 +186,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
               <div className="ml-1  lg:text-sm">
                 Mobile <span className="text-text_Primary">*</span>
               </div>
-              <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
+              <div className="flex w-full items-center py-2  rounded-lg border">
                 {/* <span
                id="dropdown-phone-button"
                className="flex-shrink-0 z-10 inline-flex items-center pl-2 pr-1 text-sm sm:text-md font-normal text-center"
@@ -196,7 +196,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
                 <input
                   readOnly
                   id="mobile-no-input"
-                  className="px-2 block w-full focus:outline-none   bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
+                  className="px-2 block w-full focus:outline-none    rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
                   placeholder="Phone Number"
                   type="text"
                   value={mobile}
@@ -235,7 +235,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
               <div className=" ml-1  lg:text-sm">
                 OTP <span className="text-text_Primary">*</span>
               </div>
-              <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
+              <div className="flex w-full items-center border p-1  rounded-lg mt-2">
                 <input
                   onChange={(e) => {
                     setUsdtDetails({
@@ -244,7 +244,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
                     });
                   }}
                   id="otpSignUp"
-                  className="block w-full focus:outline-none w-full  rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
+                  className="block w-full focus:outline-none w-full  rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md "
                   placeholder="Enter OTP"
                   type="text"
                   maxLength={6}

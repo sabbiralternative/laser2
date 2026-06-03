@@ -46,7 +46,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
               <input
                 onChange={(e) => setAmount(e.target.value)}
                 value={amount !== null && amount !== undefined ? amount : ""}
-                className="block  focus:outline-none col-span-11 w-full h-max  placeholder: placeholder:font-normal font-medium text-base"
+                className="block  focus:outline-none col-span-11 w-full h-max  placeholder: placeholder:font-normal font-medium text-base bg-transparent"
                 placeholder="₹ Enter Amount"
                 required=""
                 type="number"

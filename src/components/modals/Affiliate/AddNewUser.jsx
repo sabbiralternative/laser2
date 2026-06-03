@@ -146,7 +146,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                 d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
               ></path>
               <path
-                fill="white"
+                fill="black"
                 d="M209 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47z"
               ></path>
             </g>
@@ -166,7 +166,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                   <div className="text-[10px] ml-1 md:text-xs lg:text-sm">
                     Mobile
                   </div>
-                  <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
+                  <div className="flex w-full items-center py-2  rounded-lg border">
                     {/* <span
                id="dropdown-phone-button"
                className="flex-shrink-0 z-10 inline-flex items-center pl-2 pr-1 text-sm sm:text-md font-normal text-center"
@@ -180,7 +180,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                         }
                       }}
                       id="mobile-no-input"
-                      className="px-2 block w-full focus:outline-none w-full  bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
+                      className="px-2 block w-full focus:outline-none w-full   rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
                       placeholder="Phone Number"
                       type="text"
                       value={mobile}
@@ -217,7 +217,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                   <div className="text-[10px] ml-1 md:text-xs lg:text-sm">
                     OTP
                   </div>
-                  <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
+                  <div className="flex w-full items-center border p-1  rounded-lg mt-2">
                     <input
                       onChange={(e) => {
                         setUserDetails({
@@ -226,7 +226,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                         });
                       }}
                       id="otpSignUp"
-                      className="block w-full focus:outline-none w-full  rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
+                      className="block w-full focus:outline-none w-full  rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md "
                       placeholder="Enter OTP"
                       type="text"
                       maxLength={6}
@@ -335,7 +335,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                 <button
                   disabled={!isFormValid}
                   type="submit"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 -bold font-medium text-base cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_Primary shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 -bold font-medium text-base cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span>Add New User</span>
                 </button>
