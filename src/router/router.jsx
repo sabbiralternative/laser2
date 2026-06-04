@@ -19,6 +19,9 @@ import OpenBets from "../pages/OpenBets/OpenBets";
 import BettingProfitLoss from "../pages/BettingProfitLoss/BettingProfitLoss";
 import IFrame from "../pages/IFrame/IFrame";
 import Login from "../pages/Login/Login";
+import Rules from "../pages/Rules/Rules";
+import ChangePassword from "../pages/ChangePassword/ChangePassword";
+import Settings from "../pages/Settings/Settings";
 
 export const router = createBrowserRouter(
   [
@@ -102,6 +105,18 @@ export const router = createBrowserRouter(
         {
           path: "/:route/:name/:gameId",
           element: <IFrame />,
+        },
+        {
+          path: "/rules",
+          element: <Rules />,
+        },
+        {
+          path: "/change-password",
+          element: <ChangePassword />,
+        },
+        {
+          path: "/settings",
+          element: <Settings />,
         },
       ],
     },

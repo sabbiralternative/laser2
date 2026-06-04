@@ -7,6 +7,7 @@ import useCloseModalClickOutside from "../../../hooks/closeModal";
 import { Settings } from "../../../api";
 
 const RightDrawer = ({ setShowRightDrawer }) => {
+  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const ref = useRef();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -222,18 +223,65 @@ const RightDrawer = ({ setShowRightDrawer }) => {
           <li data-v-e9e2d909>
             <Link
               onClick={() => setShowRightDrawer(false)}
-              to="/settings"
+              to="/bonus-statement"
               className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
               data-v-e9e2d909
             >
               <img
                 className="w-[1.875rem] h-[1.875rem]"
-                src="/assets/settings.96eab642.svg"
+                src="/assets/casino.5ffa54af.svg"
                 data-v-e9e2d909
               />{" "}
-              Set Button Value
+              Bonus Statement
             </Link>
           </li>
+          <li data-v-e9e2d909>
+            <Link
+              onClick={() => setShowRightDrawer(false)}
+              to="/promotions"
+              className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+              data-v-e9e2d909
+            >
+              <img
+                className="w-[1.875rem] h-[1.875rem]"
+                src="/assets/casino.5ffa54af.svg"
+                data-v-e9e2d909
+              />{" "}
+              Promos & Bonus
+            </Link>
+          </li>
+          <li data-v-e9e2d909>
+            <Link
+              onClick={() => setShowRightDrawer(false)}
+              to="/lossback-bonus"
+              className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+              data-v-e9e2d909
+            >
+              <img
+                className="w-[1.875rem] h-[1.875rem]"
+                src="/assets/casino.5ffa54af.svg"
+                data-v-e9e2d909
+              />{" "}
+              Lossback Bonus
+            </Link>
+          </li>
+          {closePopupForForever && (
+            <li data-v-e9e2d909>
+              <Link
+                onClick={() => setShowRightDrawer(false)}
+                to="/lossback-bonus"
+                className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+                data-v-e9e2d909
+              >
+                <img
+                  className="w-[1.875rem] h-[1.875rem]"
+                  src="/assets/casino.5ffa54af.svg"
+                  data-v-e9e2d909
+                />{" "}
+                App Only Bonus
+              </Link>
+            </li>
+          )}
           <li data-v-e9e2d909>
             <Link
               onClick={() => setShowRightDrawer(false)}
@@ -249,6 +297,38 @@ const RightDrawer = ({ setShowRightDrawer }) => {
               Change Password
             </Link>
           </li>
+          <li data-v-e9e2d909>
+            <Link
+              onClick={() => setShowRightDrawer(false)}
+              to="/settings"
+              className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+              data-v-e9e2d909
+            >
+              <img
+                className="w-[1.875rem] h-[1.875rem]"
+                src="/assets/settings.96eab642.svg"
+                data-v-e9e2d909
+              />{" "}
+              Set Button Value
+            </Link>
+          </li>
+          {Settings.apk_link && (
+            <li data-v-e9e2d909>
+              <Link
+                onClick={() => setShowRightDrawer(false)}
+                to="/settings"
+                className="flex gap-2 items-center py-[1rem] pl-5 pr-2.5 text-[#999] text-sm leading-[120%] font-semibold"
+                data-v-e9e2d909
+              >
+                <img
+                  className="w-[1.875rem] h-[1.875rem]"
+                  src="/assets/settings.96eab642.svg"
+                  data-v-e9e2d909
+                />{" "}
+                Download APK
+              </Link>
+            </li>
+          )}
 
           <li data-v-e9e2d909>
             <Link
