@@ -1,7 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLogo } from "../../context/ApiProvider";
 import { Link, useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../redux/features/auth/authApi";
+import {
+  useGetOtpMutation,
+  useRegisterMutation,
+} from "../../redux/features/auth/authApi";
 import { useForm } from "react-hook-form";
 import { Settings } from "../../api";
 import { setUser } from "../../redux/features/auth/authSlice";
@@ -9,111 +12,105 @@ import { setShowBanner } from "../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
-import { useState } from "react";
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+import { useEffect, useState } from "react";
+const Register = () => {
+  const affnook_token = localStorage.getItem("affnook_token");
+  const referralCode = localStorage.getItem("referralCode");
   const { logo } = useLogo();
-  const { closePopupForForever } = useSelector((state) => state.global);
-
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const [handleLogin] = useLoginMutation();
+  const [getOTP] = useGetOtpMutation();
+  const [handleRegister] = useRegisterMutation();
   const { register, handleSubmit } = useForm();
+  const [timer, setTimer] = useState(null);
+  const [order, setOrder] = useState({
+    orderId: null,
+    otpMethod: null,
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [mobile, setMobile] = useState("");
 
-  const onSubmit = async ({ username, password }) => {
-    const loginData = {
-      username: username,
-      password: password,
-      b2c: Settings.b2c,
-      apk: closePopupForForever ? true : false,
-      nonce: crypto.randomUUID(),
-    };
-    const result = await handleLogin(loginData).unwrap();
-
-    if (result.success) {
-      const token = result?.result?.token;
-      const bonusToken = result?.result?.bonusToken;
-      const user = result?.result?.loginName;
-      const game = result?.result?.buttonValue?.game;
-      const memberId = result?.result?.memberId;
-      const banner = result?.result?.banner;
-
-      dispatch(setUser({ user, token, memberId }));
-      localStorage.setItem("memberId", memberId);
-      localStorage.setItem("buttonValue", JSON.stringify(game));
-      localStorage.setItem("token", token);
-      localStorage.setItem("bonusToken", bonusToken);
-      if (banner) {
-        localStorage.setItem("banner", banner);
-        dispatch(setShowBanner(true));
-      }
-      if (result?.result?.changePassword) {
-        navigate("/");
-        localStorage.setItem("changePassword", true);
-        navigate("/change-password");
-      }
-      if (!result?.result?.changePassword && token && user) {
-        navigate("/");
-        toast.success("Login successful");
-      }
+  const handleOTP = async () => {
+    const res = await getOTP({ mobile }).unwrap();
+    if (res?.success) {
+      setTimer(60);
+      setOrder({
+        orderId: res?.result?.orderId,
+        otpMethod: "sms",
+      });
+      toast.success(res?.result?.message);
     } else {
-      toast.error(result?.error);
+      toast.error(res?.error?.errorMessage);
     }
   };
 
-  /* handle login demo user */
-  const loginWithDemo = async () => {
-    /* Random token generator */
-    /* Encrypted the post data */
-    const loginData = {
-      username: "demo",
-      password: "",
-      b2c: Settings.b2c,
-      apk: closePopupForForever ? true : false,
-      nonce: crypto.randomUUID(),
+  const onSubmit = async (data) => {
+    const registerData = {
+      username: "",
+      password: data?.password,
+      confirmPassword: data?.confirmPassword,
+      mobile: mobile,
+      otp: data?.otp,
+      isOtpAvailable: Settings.otp,
+      referralCode: referralCode || data?.referralCode,
+      orderId: order.orderId,
+      otpMethod: order.otpMethod,
+      affnook_token: affnook_token || null,
     };
-    const result = await handleLogin(loginData).unwrap();
+
+    const result = await handleRegister(registerData).unwrap();
 
     if (result.success) {
+      if (window?.fbq) {
+        window.fbq("track", "CompleteRegistration", {
+          content_name: "User Signup",
+          status: "success",
+        });
+      }
+      localStorage.removeItem("referralCode");
       const token = result?.result?.token;
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
+      const memberId = result?.result?.memberId;
       const game = result?.result?.buttonValue?.game;
       const banner = result?.result?.banner;
-
-      dispatch(setUser({ user, token }));
+      dispatch(setUser({ user, token, memberId }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
-      localStorage.setItem("token", token);
-
       localStorage.setItem("bonusToken", bonusToken);
+      localStorage.setItem("token", token);
       if (banner) {
         localStorage.setItem("banner", banner);
         dispatch(setShowBanner(true));
       }
       if (token && user) {
         navigate("/");
-        toast.success("Login successful");
+        toast.success("Register successful");
       }
     } else {
-      toast.error(result?.error);
+      toast.error(result?.error?.description);
     }
   };
 
-  const handleDownload = (e) => {
-    e.preventDefault();
-    const fileUrl = Settings.apk_link;
-    const link = document.createElement("a");
-    link.href = fileUrl;
-    link.setAttribute("download", "site.apk");
-    document.body.appendChild(link);
-    link.click();
-    link.parentNode.removeChild(link);
+  const handleMobileNo = (e) => {
+    if (e.target.value.length <= 10) {
+      setMobile(e.target.value);
+    }
   };
 
-  const getWhatsAppId = (link) => {
-    window.open(link, "_blank");
-  };
+  useEffect(() => {
+    let interval = null;
+    if (timer) {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => {
+          if (prevTimer > 0) return prevTimer - 1;
+          clearInterval(interval);
+          return 0;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
   return (
     <div
       id="app"
@@ -171,17 +168,45 @@ const Login = () => {
                                 data-v-63f59e8b
                               >
                                 <input
-                                  {...register("username", { required: true })}
-                                  placeholder="Enter Username"
+                                  onChange={(e) => handleMobileNo(e)}
+                                  value={mobile}
+                                  placeholder="Enter Phone Number"
+                                  className="rounded-full border border-solid border-[#cccc] bg-top-menu w-full relative rounded-[1.875rem] border-[#cccc] border-[0.063rem] border-solid box-border h-[2.875rem] flex flex-row items-center justify-start py-[1.063rem] px-5 text-left text-sm text-site-color"
+                                  data-v-63f59e8b
+                                />
+                                {timer ? (
+                                  <div
+                                    className="absolute bottom-0 right-0 text-btn-primary  bg-btn-primary w-[90px] py-3  rounded-[1.875rem]   flex flex-row items-center justify-center  box-border  text-center text-base text-white !cursor-text"
+                                    type="button"
+                                  >
+                                    Retry in {timer}
+                                  </div>
+                                ) : (
+                                  <button
+                                    onClick={handleOTP}
+                                    disabled={
+                                      Settings.otp && mobile?.length < 10
+                                    }
+                                    className="absolute bottom-0 right-0 text-btn-primary  bg-btn-primary w-[90px] py-3  rounded-[1.875rem]   flex flex-row items-center justify-center  box-border cursor-pointer text-center text-base text-white"
+                                    type="button"
+                                  >
+                                    Get OTP
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                            <div className="mb-2" data-v-9fd05652>
+                              <div
+                                className="form-control1 w-full flex flex-col relative"
+                                data-v-63f59e8b
+                              >
+                                <input
+                                  {...register("otp", { required: true })}
+                                  placeholder="Enter Phone Number"
                                   className="rounded-full border border-solid border-[#cccc] bg-top-menu w-full relative rounded-[1.875rem] border-[#cccc] border-[0.063rem] border-solid box-border h-[2.875rem] flex flex-row items-center justify-start py-[1.063rem] px-5 text-left text-sm text-site-color"
                                   data-v-63f59e8b
                                 />
                               </div>
-                              <span
-                                className="text-xs text-red-700"
-                                data-v-63f59e8b
-                                style={{ display: "none" }}
-                              />
                             </div>
                             <div className="mb-5" data-v-9fd05652>
                               <div
@@ -196,7 +221,7 @@ const Login = () => {
                                   data-v-63f59e8b
                                 />
                                 <button
-                                  className="absolute bottom-4 right-5 text-btn-primary cursor-pointer"
+                                  className="absolute bottom-3 right-5 text-btn-primary cursor-pointer"
                                   type="button"
                                 >
                                   {showPassword ? (
@@ -212,11 +237,55 @@ const Login = () => {
                                   )}
                                 </button>
                               </div>
-                              <span
-                                className="text-xs text-red-700"
+                            </div>
+                            <div className="mb-5" data-v-9fd05652>
+                              <div
+                                className="form-control1 w-full flex flex-col relative"
                                 data-v-63f59e8b
-                                style={{ display: "none" }}
-                              />
+                              >
+                                <input
+                                  {...register("password", { required: true })}
+                                  type={
+                                    showConfirmPassword ? "text" : "password"
+                                  }
+                                  placeholder="Enter Your Password"
+                                  className="rounded-full border border-solid border-[#cccc] bg-top-menu w-full relative rounded-[1.875rem] border-[#cccc] border-[0.063rem] border-solid box-border h-[2.875rem] flex flex-row items-center justify-start py-[1.063rem] px-5 text-left text-sm text-site-color"
+                                  data-v-63f59e8b
+                                />
+                                <button
+                                  className="absolute bottom-3 right-5 text-btn-primary cursor-pointer"
+                                  type="button"
+                                >
+                                  {showPassword ? (
+                                    <IoEye
+                                      size={20}
+                                      onClick={() =>
+                                        setShowConfirmPassword(false)
+                                      }
+                                    />
+                                  ) : (
+                                    <IoMdEyeOff
+                                      size={20}
+                                      onClick={() => setShowPassword(true)}
+                                    />
+                                  )}
+                                </button>
+                              </div>
+                            </div>
+                            <div className="mb-2" data-v-9fd05652>
+                              <div
+                                className="form-control1 w-full flex flex-col relative"
+                                data-v-63f59e8b
+                              >
+                                <input
+                                  readOnly={referralCode}
+                                  {...register("referralCode")}
+                                  defaultValue={referralCode}
+                                  placeholder="Enter referral code(Optional)"
+                                  className="rounded-full border border-solid border-[#cccc] bg-top-menu w-full relative rounded-[1.875rem] border-[#cccc] border-[0.063rem] border-solid box-border h-[2.875rem] flex flex-row items-center justify-start py-[1.063rem] px-5 text-left text-sm text-site-color"
+                                  data-v-63f59e8b
+                                />
+                              </div>
                             </div>
                             <div
                               className="text-center pt-1 mb-4 pb-1"
@@ -235,69 +304,20 @@ const Login = () => {
                                     className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                     data-v-9fd05652
                                   >
-                                    Login
-                                  </div>
-                                </button>
-                                <button
-                                  onClick={loginWithDemo}
-                                  className="w-full relative rounded-[1.875rem] bg-btn-primary h-[2.875rem] flex flex-row items-center justify-center py-0 box-border cursor-pointer text-center text-base text-white mt-3"
-                                  type="button"
-                                  data-v-9fd05652
-                                >
-                                  <div
-                                    className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
-                                    data-v-9fd05652
-                                  >
-                                    Login with Demo ID
+                                    Register
                                   </div>
                                 </button>
                               </div>
                               <div className="w-full flex justify-center mt-1">
                                 <span className="text-black4 text-xs">
-                                  Don&apos;t have an account?
+                                  Already have account?{" "}
                                 </span>
                                 <Link
-                                  to="/register"
+                                  to="/login"
                                   className="cursor-pointer text-black4 font-bold text-xs underline"
                                 >
-                                  Sign Up
+                                  Login
                                 </Link>
-                              </div>
-                              <div className="flex  gap-3 mt-3" data-v-9fd05652>
-                                {Settings?.whatsapplink &&
-                                  Settings.registration_whatsapp && (
-                                    <button
-                                      onClick={() =>
-                                        getWhatsAppId(Settings?.whatsapplink)
-                                      }
-                                      className="w-full relative rounded-[1.875rem] bg-btn-primary h-[2.875rem] flex flex-row items-center justify-center py-0 box-border cursor-pointer text-center text-base text-white"
-                                      type="submit"
-                                      data-v-9fd05652
-                                    >
-                                      <div
-                                        className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
-                                        data-v-9fd05652
-                                      >
-                                        WhatsApp
-                                      </div>
-                                    </button>
-                                  )}
-                                {Settings.apk_link && (
-                                  <button
-                                    onClick={handleDownload}
-                                    className="w-full relative rounded-[1.875rem] bg-btn-primary h-[2.875rem] flex flex-row items-center justify-center py-0 box-border cursor-pointer text-center text-base text-white"
-                                    type="button"
-                                    data-v-9fd05652
-                                  >
-                                    <div
-                                      className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
-                                      data-v-9fd05652
-                                    >
-                                      {" "}
-                                      Download .apk
-                                    </div>
-                                  </button>
-                                )}
                               </div>
                             </div>
                           </div>
@@ -329,21 +349,8 @@ const Login = () => {
           </div>
         </section>
       </div>
-      <div
-        className="h-full w-full _relative"
-        id="loading"
-        style={{ display: "none" }}
-      >
-        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black text-gray-400">
-          <img
-            src="https://cd.tesla108.com/images/Domains/Lasersbook247/Logo.gif"
-            className="w-40 h-auto animate-pulse"
-          />
-          <div className="mt-6 w-12 h-12 border-4 border-gray-400 border-t-transparent rounded-full animate-spin" />
-        </div>
-      </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

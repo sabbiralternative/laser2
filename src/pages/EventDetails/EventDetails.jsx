@@ -14,8 +14,10 @@ import { HorseGreyhoundEventDetails } from "../../components/modules/EventDetail
 import { Settings } from "../../api";
 import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
 import EventTab from "../../components/modules/EventDetails/EventTab";
+import Score from "../../components/modules/EventDetails/Score";
 
 const EventDetails = () => {
+  const [tab, setTab] = useState("market");
   const [sportsVideo, { data: iframe }] = useVideoMutation();
   const { eventTypeId, eventId } = useParams();
   const [profit, setProfit] = useState(0);
@@ -183,21 +185,86 @@ const EventDetails = () => {
               className="mt-2 w-full h-full relative flex flex-col px-3 md:px-0"
               data-v-8e891727
             >
-              <EventTab />
-
-              <section className="w-full font-cera-round-pro" data-v-8e891727>
-                <div data-v-8e891727>
-                  <div className="bets-wrap mb-10" data-v-8e891727>
-                    {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
-                    {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
-                    {data?.result?.length > 0 && <Fancy data={data?.result} />}
-                    {eventTypeId == 7 || eventTypeId == 4339 ? (
-                      <HorseGreyhoundEventDetails data={data?.result} />
-                    ) : null}
-                    {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
+              <EventTab setTab={setTab} tab={tab} />
+              {eventTypeId == 4 && data?.iscore && tab === "score" && (
+                <Score iscore={data?.iscore} />
+              )}
+              {data?.score && data?.score?.tracker !== null && tab === "tv" && (
+                <div className="w-full overflow-hidden h-[125px]">
+                  <iframe
+                    id="videoComponent"
+                    className="w-full h-auto relative overflow-hidden   bg-transparent"
+                    src={data?.score?.tracker}
+                    width="100%"
+                    allowfullscreen=""
+                  ></iframe>
+                </div>
+              )}
+              {iframe?.result?.url && data?.score?.hasVideo && tab === "tv" && (
+                <iframe
+                  id="videoComponent"
+                  className="w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
+                  src={iframe?.result?.url}
+                  width="100%"
+                  allowfullscreen=""
+                ></iframe>
+              )}
+              {tab !== "open-bets" && (
+                <section className="w-full font-cera-round-pro" data-v-8e891727>
+                  <div data-v-8e891727>
+                    <div className="bets-wrap mb-10" data-v-8e891727>
+                      {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
+                      {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
+                      {data?.result?.length > 0 && (
+                        <Fancy data={data?.result} />
+                      )}
+                      {eventTypeId == 7 || eventTypeId == 4339 ? (
+                        <HorseGreyhoundEventDetails data={data?.result} />
+                      ) : null}
+                      {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
+                    </div>
+                  </div>
+                </section>
+              )}
+              {tab === "open-bets" && (
+                <div className="w-full pb-0" id="myTabContent" data-v-8e891727>
+                  <div data-v-8e891727>
+                    <section
+                      className="w-full font-cera-round-pro"
+                      data-v-8e891727
+                    >
+                      <div className="hidden" data-v-8e891727>
+                        <div
+                          className="px-0"
+                          data-v-9bbf2986
+                          data-v-8e891727
+                          style={{ position: "relative" }}
+                        >
+                          <div className data-v-9bbf2986 />
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <div className="mt-[0.938rem] pb-3" data-v-8e891727>
+                    <div
+                      className="w-full py-1 text-sm px-1 font-bold"
+                      data-v-8e891727
+                    >
+                      Current Bet
+                    </div>
+                    <div className="px-1" data-v-8e891727>
+                      <div className data-v-8e891727>
+                        <div
+                          className="text-sm my-1 p-4 bg-top-menu rounded-lg"
+                          data-v-8e891727
+                        >
+                          You have no matched bets.
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </section>
+              )}
             </section>
           </div>
           <RightSidebar />

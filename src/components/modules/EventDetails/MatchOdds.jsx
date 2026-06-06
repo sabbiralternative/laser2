@@ -20,7 +20,6 @@ export const MatchOdds = ({ data }) => {
   const dispatch = useDispatch();
   const { runnerId, stake, predictOdd } = useSelector((state) => state.event);
   const { token } = useSelector((state) => state.auth);
-  const { windowWidth } = useSelector((state) => state.global);
   const { data: exposure } = useExposure(eventId);
 
   const handleBetSlip = (betType, games, runner, price) => {
@@ -304,6 +303,7 @@ export const MatchOdds = ({ data }) => {
                           game?.name !== "toss" &&
                           speedCashOut && (
                             <button
+                              disabled={isGameSuspended(game)}
                               style={{ background: "#82371b" }}
                               className="flex flex-col justify-center px-2.5 text-[0.625rem] h-[2.125rem] rounded-[1.563rem] border cashout-btn overflow-hidden relative bg-btn-primary border-btn-primary !text-white cursor-not-allowed"
                               data-v-5b111243
@@ -382,9 +382,31 @@ export const MatchOdds = ({ data }) => {
                                     {runner?.name}
                                   </div>
                                   <div
-                                    className="text-sm font-normal"
+                                    className="text-sm font-normal flex items-center gap-x-3"
                                     data-v-ee2b582e
                                   >
+                                    {pnl && (
+                                      <div
+                                        className={`text-[11px]  ${
+                                          pnl?.pnl > 0
+                                            ? "text-green-500"
+                                            : "text-red-500"
+                                        }`}
+                                      >
+                                        {pnl?.pnl}
+                                      </div>
+                                    )}
+                                    {stake && runnerId && predictOddValues && (
+                                      <div
+                                        className={`text-[11px]  ${
+                                          predictOddValues?.exposure > 0
+                                            ? "text-green-500"
+                                            : "text-red-500"
+                                        }`}
+                                      >
+                                        » {predictOddValues?.exposure}
+                                      </div>
+                                    )}
                                     <span className data-v-ee2b582e></span>
                                   </div>
                                 </div>

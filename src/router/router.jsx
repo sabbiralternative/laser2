@@ -22,6 +22,8 @@ import Login from "../pages/Login/Login";
 import Rules from "../pages/Rules/Rules";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
 import Settings from "../pages/Settings/Settings";
+import Register from "../pages/Register/Register";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 
 export const router = createBrowserRouter(
   [
@@ -123,6 +125,14 @@ export const router = createBrowserRouter(
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/forgot-password",
+      element: <ForgotPassword />,
     },
   ],
   {
