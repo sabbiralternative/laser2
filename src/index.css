@@ -12,7 +12,15 @@ a {
 .rfm-marquee-container {
   overflow: hidden !important;
 }
-
+.bg-clip-text {
+  background-clip: text !important;
+}
+.bg-bg_text_brand_secondary {
+  background: var(--btn-primary);
+}
+.bg-bg_color_casinoProvider {
+  background: var(--top-menu);
+}
 /*!-------------- Score card-------------- */
 
 *,

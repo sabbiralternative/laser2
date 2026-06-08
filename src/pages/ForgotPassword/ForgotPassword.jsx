@@ -170,8 +170,9 @@ const ForgotPassword = () => {
                                 data-v-63f59e8b
                               >
                                 <input
+                                  maxLength={4}
                                   {...register("otp", { required: true })}
-                                  placeholder="Enter Phone Number"
+                                  placeholder="Enter OTP"
                                   className="rounded-full border border-solid border-[#cccc] bg-top-menu w-full relative rounded-[1.875rem] border-[#cccc] border-[0.063rem] border-solid box-border h-[2.875rem] flex flex-row items-center justify-start py-[1.063rem] px-5 text-left text-sm text-site-color"
                                   data-v-63f59e8b
                                 />
@@ -183,6 +184,7 @@ const ForgotPassword = () => {
                                 data-v-63f59e8b
                               >
                                 <input
+                                  maxLength={20}
                                   {...register("password", { required: true })}
                                   type={showPassword ? "text" : "password"}
                                   placeholder="Enter Your Password"
@@ -213,6 +215,7 @@ const ForgotPassword = () => {
                                 data-v-63f59e8b
                               >
                                 <input
+                                  maxLength={20}
                                   {...register("password", { required: true })}
                                   type={
                                     showConfirmPassword ? "text" : "password"

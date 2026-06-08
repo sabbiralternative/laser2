@@ -189,6 +189,7 @@ const Login = () => {
                                 data-v-63f59e8b
                               >
                                 <input
+                                  maxLength={20}
                                   {...register("password", { required: true })}
                                   type={showPassword ? "text" : "password"}
                                   placeholder="Enter Your Password"

@@ -19,7 +19,7 @@ import LoginButton from "./LoginButton";
 import RightDrawer from "./RightDrawer";
 import Search from "./Search";
 
-const Header = () => {
+const Header = ({ setMobileSidebar }) => {
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
   const [showRightDrawer, setShowRightDrawer] = useState(false);
@@ -89,6 +89,7 @@ const Header = () => {
                 data-v-e9e2d909
               >
                 <div
+                  onClick={() => setMobileSidebar(true)}
                   className="w-[3.125rem] h-[3.125rem] ml-[0.625rem] bg-btn-primary rounded-full flex flex-col items-center justify-center md:hidden"
                   data-v-f86ae6b0
                   data-v-e9e2d909
@@ -149,6 +150,7 @@ const Header = () => {
               data-v-e9e2d909
             >
               <svg
+                onClick={() => setShowSearch(true)}
                 viewBox="0 0 512 512"
                 className="top-0 block md:hidden w-[3.125rem] h-[3.125rem] min-h-[3.125rem] p-[1.063rem] text-site-color bg-primary-bg rounded-full ml-5 border border-search-icon-border"
                 aria-hidden="true"
