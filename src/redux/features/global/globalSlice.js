@@ -14,6 +14,7 @@ const initialState = {
   showAPKModal: false,
   windowWidth: window.innerWidth,
   closePopupForForever: false,
+  theme: null,
 };
 
 const stateSlice = createSlice({
@@ -59,6 +60,9 @@ const stateSlice = createSlice({
     setClosePopUpForForever: (state, action) => {
       state.closePopupForForever = action.payload;
     },
+    setTheme: (state, action) => {
+      state.theme = action.payload;
+    },
   },
 });
 
@@ -76,6 +80,7 @@ export const {
   setWindowWidth,
   setShowAPKModal,
   setClosePopUpForForever,
+  setTheme,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

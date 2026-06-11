@@ -1,4 +1,100 @@
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Teko:wght@300..700&display=swap";
+:root {
+  --vh: 1vh;
+
+  --white-black: #fff;
+  --card-bg: #fff;
+  --card-description: #666;
+  --getitem-bg: #fffefe;
+
+  --card-border: #ccc;
+  --lay: #f8d0ce;
+  --back: #a5d9fe;
+  --ghost-white: #f9faff;
+  --jupiter: #e1e1e1;
+  --blue-cotton-ball: #f1f5ff;
+  --border-menu: #dedede;
+  --search-icon-border: #c7c7c7;
+  --balance-expo-txt: #4a4a4a;
+  --balance-expo-bg: #f6f6f6;
+  --win-item-border: #ebebeb;
+  --hover-item: #e9eefb;
+  --loadercolor: #4aa28a;
+  --secondary-bg: #000;
+  --link-bg: #bbb;
+  --grey-bg: #ccc;
+  --light-bg: #eee;
+  --suspended-color: #730709;
+  --red-color: #ff0000;
+  --yellow-color: #ffff00;
+  --green-color: #00ff00;
+  --white-color: #fff;
+  --green-bg: #145b12;
+  --blue-color: #0000ff;
+  --theme1-bg: #222222;
+  --theme1-bg90: #222222e6;
+  --theme2-bg: #2c4a88;
+  --theme2-bg70: #2c4a88b3;
+  --theme2-bg85: #2c4a88d9;
+  --primary-color: #fff;
+  --secondary-color: #fff;
+  --bg-green-deposit: #d1f9df;
+  --bg-red-withdrawal: #f9d1d1;
+  --filter-x: #c7c7c7;
+  --bg-bets-header: #cdcdcd;
+  --invert: 0;
+}
+
+.theme-dark {
+  --white-black: #fff;
+  --card-bg: #fff;
+  --card-description: #868686;
+  --getitem-bg: #1f1f1f;
+  --card-border: #585858;
+  --lay: #f8d0ce;
+  --back: #a5d9fe;
+  --ghost-white: var(--top-menu);
+  --jupiter: var(--card-border);
+  --blue-cotton-ball: var(--getitem-bg);
+  --border-menu: var(--card-border);
+  --search-icon-border: var(--border-menu);
+  --balance-expo-txt: #929292;
+  --balance-expo-bg: black;
+  --win-item-border: #2a2a2a;
+  --hover-item: #3b3b3c;
+  --loadercolor: #c1a86f;
+  --secondary-bg: #000;
+  --link-bg: #bbb;
+  --grey-bg: #ccc;
+  --light-bg: #eee;
+  --suspended-color: #730709;
+  --red-color: #ff0000;
+  --yellow-color: #ffff00;
+  --green-color: #00ff00;
+  --white-color: #fff;
+  --green-bg: #145b12;
+  --blue-color: #0000ff;
+  --theme1-bg: #222222;
+  --theme1-bg90: #222222e6;
+  --theme2-bg: #2c4a88;
+  --theme2-bg70: #2c4a88b3;
+  --theme2-bg85: #2c4a88d9;
+  --primary-color: #fff;
+  --secondary-color: #fff;
+  --scrollbar-track-color: rgba(187, 187, 187, 0.1);
+  --scrollbar-color: rgba(192, 192, 192, 0.2);
+  --scrollbar-ff-width: thin;
+  --scrollbar-size: 0.4rem;
+  --scrollbar-minlength: 1rem;
+  --scrollbar-color-hover: rgba(199, 199, 199, 0.3);
+  --scrollbar-color-active: rgba(181, 181, 181, 0.6);
+  --bg-green-deposit: #32493a;
+  --bg-red-withdrawal: #493232;
+  --filter-x: #1e2734;
+  --bg-bets-header: #252525;
+  --invert: 1;
+}
+
 @media only screen and (min-width: 48rem) {
   .loader-img {
     width: 30%;
@@ -98,58 +194,58 @@
 .theme-alerts-selected {
   --i: "\ea0f";
 }
-.theme-allgames {
+dallgames {
   --i: "\ea10";
 }
-.theme-android {
+dandroid {
   --i: "\ea11";
 }
-.theme-apple {
+dapple {
   --i: "\ea12";
 }
-.theme-arc {
+darc {
   --i: "\ea13";
 }
-.theme-arrow-down {
+darrow-down {
   --i: "\ea14";
 }
-.theme-arrow-left {
+darrow-left {
   --i: "\ea15";
 }
-.theme-arrow-right {
+darrow-right {
   --i: "\ea16";
 }
-.theme-attention {
+dattention {
   --i: "\ea17";
 }
-.theme-avatar1 {
+davatar1 {
   --i: "\ea19";
 }
-.theme-avatar {
+davatar {
   --i: "\ea18";
 }
-.theme-az-menu-search {
+daz-menu-search {
   --i: "\ea1a";
 }
-.theme-b-exclusive {
+db-exclusive {
   --i: "\ea1b";
 }
-.theme-badge {
+dbadge {
   --i: "\ea1c";
 }
-.theme-barstool {
+dbarstool {
   --i: "\ea1d";
 }
-.theme-baseball-indicator {
+dbaseball-indicator {
   --i: "\ea1e";
 }
-.theme-betradar-american-football {
+dbetradar-american-football {
   --i: "\ea1f";
 }
-.theme-betradar-cricket {
+dbetradar-cricket {
   --i: "\ea20";
 }
-.theme-betradar-darts {
+dbetradar-darts {
   --i: "\ea21";
 }
 .theme-betradar-handball {
@@ -5059,55 +5155,7 @@ body {
 * {
   box-sizing: border-box;
 }
-:root {
-  --vh: 1vh;
-  --primary-bg: #fff;
-  --site-color: #000;
-  --txt-black: #343a40;
-  --text-primary: #08c;
-  --text-secondary: #2d3e50;
-  --white-black: #fff;
-  --card-bg: #fff;
-  --card-description: #666;
-  --btn-primary: #c1a86f;
-  --getitem-bg: #fffefe;
-  --top-menu: #fbfafa;
-  --card-border: #ccc;
-  --lay: #f8d0ce;
-  --back: #a5d9fe;
-  --ghost-white: #f9faff;
-  --jupiter: #e1e1e1;
-  --blue-cotton-ball: #f1f5ff;
-  --border-menu: #dedede;
-  --search-icon-border: #c7c7c7;
-  --balance-expo-txt: #4a4a4a;
-  --balance-expo-bg: #f6f6f6;
-  --win-item-border: #ebebeb;
-  --hover-item: #e9eefb;
-  --loadercolor: #4aa28a;
-  --secondary-bg: #000;
-  --link-bg: #bbb;
-  --grey-bg: #ccc;
-  --light-bg: #eee;
-  --suspended-color: #730709;
-  --red-color: #ff0000;
-  --yellow-color: #ffff00;
-  --green-color: #00ff00;
-  --white-color: #fff;
-  --green-bg: #145b12;
-  --blue-color: #0000ff;
-  --theme1-bg: #222222;
-  --theme1-bg90: #222222e6;
-  --theme2-bg: #2c4a88;
-  --theme2-bg70: #2c4a88b3;
-  --theme2-bg85: #2c4a88d9;
-  --primary-color: #fff;
-  --secondary-color: #fff;
-  --bg-green-deposit: #d1f9df;
-  --bg-red-withdrawal: #f9d1d1;
-  --filter-x: #c7c7c7;
-  --bg-bets-header: #cdcdcd;
-}
+
 html,
 body {
   scroll-behavior: smooth;
@@ -5121,63 +5169,9 @@ body {
   background-color: #e3e4e9;
   -webkit-overflow-scrolling: touch;
 }
+
+.theme-dark,
 .theme-dark {
-  --primary-bg: #000;
-  --site-color: #fff;
-  --txt-black: #989898;
-  --text-primary: #08c;
-  --text-secondary: #2d3e50;
-  --white-black: #fff;
-  --card-bg: #fff;
-  --card-description: #868686;
-  --btn-primary: #c1a86f;
-  --getitem-bg: #1f1f1f;
-  --top-menu: #2a2a2a;
-  --card-border: #585858;
-  --lay: #f8d0ce;
-  --back: #a5d9fe;
-  --ghost-white: var(--top-menu);
-  --jupiter: var(--card-border);
-  --blue-cotton-ball: var(--getitem-bg);
-  --border-menu: var(--card-border);
-  --search-icon-border: var(--border-menu);
-  --balance-expo-txt: #929292;
-  --balance-expo-bg: black;
-  --win-item-border: #2a2a2a;
-  --hover-item: #3b3b3c;
-  --loadercolor: #c1a86f;
-  --secondary-bg: #000;
-  --link-bg: #bbb;
-  --grey-bg: #ccc;
-  --light-bg: #eee;
-  --suspended-color: #730709;
-  --red-color: #ff0000;
-  --yellow-color: #ffff00;
-  --green-color: #00ff00;
-  --white-color: #fff;
-  --green-bg: #145b12;
-  --blue-color: #0000ff;
-  --theme1-bg: #222222;
-  --theme1-bg90: #222222e6;
-  --theme2-bg: #2c4a88;
-  --theme2-bg70: #2c4a88b3;
-  --theme2-bg85: #2c4a88d9;
-  --primary-color: #fff;
-  --secondary-color: #fff;
-  --scrollbar-track-color: rgba(187, 187, 187, 0.1);
-  --scrollbar-color: rgba(192, 192, 192, 0.2);
-  --scrollbar-ff-width: thin;
-  --scrollbar-size: 0.4rem;
-  --scrollbar-minlength: 1rem;
-  --scrollbar-color-hover: rgba(199, 199, 199, 0.3);
-  --scrollbar-color-active: rgba(181, 181, 181, 0.6);
-  --bg-green-deposit: #32493a;
-  --bg-red-withdrawal: #493232;
-  --filter-x: #1e2734;
-  --bg-bets-header: #252525;
-}
-.theme-dark html,
-.theme-dark body {
   scroll-behavior: smooth;
   height: 100dvh;
   overflow-y: auto;
@@ -5188,61 +5182,7 @@ body {
   color: var(--site-color);
   background-color: #000;
 }
-.theme-orangedark {
-  --primary-bg: #000;
-  --site-color: #fff;
-  --txt-black: #989898;
-  --text-primary: #08c;
-  --text-secondary: #2d3e50;
-  --white-black: #fff;
-  --card-bg: #fff;
-  --card-description: #868686;
-  --btn-primary: #f37b25;
-  --getitem-bg: #292a2f;
-  --top-menu: #292a2f;
-  --card-border: #585858;
-  --lay: #f8d0ce;
-  --back: #a5d9fe;
-  --ghost-white: var(--top-menu);
-  --jupiter: var(--card-border);
-  --blue-cotton-ball: var(--getitem-bg);
-  --border-menu: var(--card-border);
-  --search-icon-border: var(--border-menu);
-  --balance-expo-txt: #929292;
-  --balance-expo-bg: black;
-  --win-item-border: #2a2a2a;
-  --hover-item: #3b3b3c;
-  --loadercolor: #f37b25;
-  --secondary-bg: #000;
-  --link-bg: #bbb;
-  --grey-bg: #ccc;
-  --light-bg: #eee;
-  --suspended-color: #730709;
-  --red-color: #ff0000;
-  --yellow-color: #ffff00;
-  --green-color: #00ff00;
-  --white-color: #fff;
-  --green-bg: #145b12;
-  --blue-color: #0000ff;
-  --theme1-bg: #222222;
-  --theme1-bg90: #222222e6;
-  --theme2-bg: #2c4a88;
-  --theme2-bg70: #2c4a88b3;
-  --theme2-bg85: #2c4a88d9;
-  --primary-color: #fff;
-  --secondary-color: #fff;
-  --scrollbar-track-color: rgba(187, 187, 187, 0.1);
-  --scrollbar-color: rgba(192, 192, 192, 0.2);
-  --scrollbar-ff-width: thin;
-  --scrollbar-size: 0.4rem;
-  --scrollbar-minlength: 1rem;
-  --scrollbar-color-hover: rgba(199, 199, 199, 0.3);
-  --scrollbar-color-active: rgba(181, 181, 181, 0.6);
-  --bg-green-deposit: #32493a;
-  --bg-red-withdrawal: #493232;
-  --filter-x: #1e2734;
-  --bg-bets-header: #252525;
-}
+
 .theme-light.coexch247 {
   --btn-primary: #f37b25;
   --loadercolor: #f37b25;
@@ -5250,8 +5190,8 @@ body {
 .theme-light.coexch247 .rounded-border:after {
   background-color: #f37b25;
 }
-.theme-orangedark html,
-.theme-orangedark body {
+.theme-orangedark,
+.theme-orangedark {
   scroll-behavior: smooth;
   height: 100dvh;
   overflow-y: auto;
@@ -5304,61 +5244,7 @@ body {
 .theme-light.turn666 .rounded-border:after {
   background-color: #e7b713;
 }
-.theme-green {
-  --primary-bg: #000;
-  --site-color: #fff;
-  --txt-black: #989898;
-  --text-primary: #08c;
-  --text-secondary: #2d3e50;
-  --white-black: #fff;
-  --card-bg: #fff;
-  --card-description: #868686;
-  --btn-primary: #4aa28a;
-  --getitem-bg: #292a2f;
-  --top-menu: #292a2f;
-  --card-border: #585858;
-  --lay: #f8d0ce;
-  --back: #a5d9fe;
-  --ghost-white: var(--top-menu);
-  --jupiter: var(--card-border);
-  --blue-cotton-ball: var(--getitem-bg);
-  --border-menu: var(--card-border);
-  --search-icon-border: var(--border-menu);
-  --balance-expo-txt: #929292;
-  --balance-expo-bg: black;
-  --win-item-border: #2a2a2a;
-  --hover-item: #3b3b3c;
-  --loadercolor: #4aa28a;
-  --secondary-bg: #000;
-  --link-bg: #bbb;
-  --grey-bg: #ccc;
-  --light-bg: #eee;
-  --suspended-color: #730709;
-  --red-color: #ff0000;
-  --yellow-color: #ffff00;
-  --green-color: #00ff00;
-  --white-color: #fff;
-  --green-bg: #145b12;
-  --blue-color: #0000ff;
-  --theme1-bg: #222222;
-  --theme1-bg90: #222222e6;
-  --theme2-bg: #2c4a88;
-  --theme2-bg70: #2c4a88b3;
-  --theme2-bg85: #2c4a88d9;
-  --primary-color: #fff;
-  --secondary-color: #fff;
-  --scrollbar-track-color: rgba(187, 187, 187, 0.1);
-  --scrollbar-color: rgba(192, 192, 192, 0.2);
-  --scrollbar-ff-width: thin;
-  --scrollbar-size: 0.4rem;
-  --scrollbar-minlength: 1rem;
-  --scrollbar-color-hover: rgba(199, 199, 199, 0.3);
-  --scrollbar-color-active: rgba(181, 181, 181, 0.6);
-  --bg-green-deposit: #32493a;
-  --bg-red-withdrawal: #493232;
-  --filter-x: #1e2734;
-  --bg-bets-header: #252525;
-}
+
 .theme-light.abexch9,
 .theme-light.usdtexch,
 .theme-light.localhost {
@@ -5429,8 +5315,8 @@ body {
   border-left-color: #4aa28a;
   border-right-color: #4aa28a;
 }
-.theme-green html,
-.theme-green body {
+.theme-green,
+.theme-green {
   scroll-behavior: smooth;
   height: 100dvh;
   overflow-y: auto;

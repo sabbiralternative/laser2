@@ -26,7 +26,7 @@
 .nw-affi-heading-text {
   font-size: 12px;
   font-weight: 600;
-  color: #fff;
+  color: #999;
   text-transform: capitalize;
 }
 
@@ -62,7 +62,7 @@
   margin: 0 auto;
   font-size: 20px;
   font-weight: 400;
-  color: #fff;
+  color: #999;
 }
 
 .nw-affi-status-digit-para p {
@@ -73,7 +73,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #fff;
+  color: #999;
   text-transform: capitalize;
 }
 
@@ -95,7 +95,7 @@
 }
 
 .nw-affi-invite-sec h2 {
-  color: #fff;
+  color: #999;
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 2px;
@@ -103,7 +103,7 @@
 }
 
 .nw-affi-invite-sec p {
-  color: #fff;
+  color: #999;
   font-size: 12px;
   font-weight: 500;
   text-transform: capitalize;
@@ -123,7 +123,7 @@
 .nw-affi-add-new-user-btn {
   background: var(--btn-primary);
   position: relative;
-  color: var(--color-text-primary);
+  color: #fff;
   padding: 16px;
   display: block;
   width: 100%;
@@ -173,7 +173,7 @@
 }
 
 .nw-affi-qr-invite-heading h3 {
-  color: #fff;
+  color: #999;
   font-size: 12px;
   font-weight: 700;
 }
@@ -210,7 +210,7 @@
 }
 
 .nw-affi-qr-sec span {
-  color: #fff;
+  color: #999;
   text-decoration: underline;
   font-size: 12px;
   font-weight: 600;
@@ -247,14 +247,14 @@
   min-width: 140px;
   height: 45px;
   width: 48%;
-  color: #fff;
+  color: #999;
 }
 
 .nw-affi-qr-invite-wrapper .af-form-btn-sec button {
   min-width: 140px;
   height: 54px;
   width: 48%;
-  color: #fff;
+  color: #999;
 }
 
 .af-form-btn-sec button {
@@ -265,7 +265,7 @@
 .affi-cancel-btn {
   border-radius: 100px !important;
   border: none;
-  color: #fff !important;
+  color: #999 !important;
 }
 
 /* .affi-yellow-btn {
@@ -333,7 +333,7 @@ button:not(:disabled) {
 
 .af-top-user-head h6 {
   font-size: 12px;
-  color: #fff;
+  color: #999;
   font-weight: 500;
 }
 
@@ -378,7 +378,7 @@ button:not(:disabled) {
 }
 
 .af-top-user-sec table thead th {
-  color: #fff;
+  color: #999;
   font-size: 12px;
   font-weight: 600;
   border: none;
@@ -403,7 +403,7 @@ tr {
 .af-top-user-sec table td {
   font-size: 12px;
   font-weight: 400;
-  color: #fff;
+  color: #999;
 }
 
 .af-top-user-sec table td.green-font-color,
@@ -417,7 +417,7 @@ tr {
 }
 
 .affi-how-bonus-list h5 {
-  color: #fff;
+  color: #999;
   margin-bottom: 10px;
   font-size: 16px;
 }
@@ -428,7 +428,7 @@ tr {
 }
 
 .affi-how-bonus-list li {
-  color: #fff;
+  color: #999;
   list-style: disc;
   margin-left: 15px;
   margin-bottom: 10px;
@@ -444,18 +444,18 @@ tr {
 }
 
 .affi-how-bonus-list h5 {
-  color: #fff;
+  color: #999;
   margin-bottom: 10px;
   font-size: 16px;
 }
 
 .affi-how-bonus-list.affi-how-to-get-bonus p {
-  color: #fff;
+  color: #999;
   margin-bottom: 10px;
 }
 
 .affi-how-bonus-list.affi-how-to-get-bonus h6 {
-  color: #fff;
+  color: #999;
   margin: 15px 0;
   font-size: 14px;
 }
@@ -466,7 +466,7 @@ tr {
 }
 
 .affi-how-bonus-list li {
-  color: #fff;
+  color: #999;
   list-style: disc;
   margin-left: 15px;
   margin-bottom: 10px;
@@ -492,7 +492,7 @@ table {
 .affi-how-bonus-list .cmn-head.thead-mainn tr th {
   background-color: var(--top-menu);
   padding: 10px;
-  color: #fff;
+  color: #999;
   text-align: left;
 }
 
@@ -503,7 +503,7 @@ table {
 
 .affi-how-bonus-list tr td {
   padding: 10px;
-  color: #fff;
+  color: #999;
 }
 /*Footer starts  */
 
@@ -530,12 +530,12 @@ footer[data-v-066114c4] {
 
 .affilate_footer a.active[data-v-066114c4] {
   background: var(--btn-primary);
-  color: #fff;
+  color: #999;
 }
 
 .affilate_footer nav a[data-v-066114c4] {
   text-decoration: none;
-  color: #fff;
+  color: #999;
   display: flex;
   align-items: center;
   padding: 0.75rem 1.25rem;
@@ -589,7 +589,7 @@ footer[data-v-066114c4] {
 .nw-affi-user-table th {
   font-size: 12px;
   font-weight: 500;
-  color: #fff;
+  color: #999;
   text-align: center;
   white-space: nowrap;
   padding: 3px 10px;
@@ -618,7 +618,7 @@ tr.tabetdat td {
 .nw-affi-user-table td {
   font-size: 12px;
   font-weight: 400;
-  color: #fff;
+  color: #999;
   text-align: center;
   padding: 5px 5px;
   vertical-align: middle;
@@ -626,7 +626,7 @@ tr.tabetdat td {
 }
 
 .text-center[data-v-fd406c30] {
-  color: #fff;
+  color: #999;
 }
 
 .text-center.affiliate-no-recoard-data {
@@ -664,13 +664,13 @@ tr.tabetdat td {
   width: 100% !important;
 }
 .label-pl12 {
-  color: #fff;
+  color: #999;
   font-size: 13px;
 }
 .affiliate-pl.affi-date-filter-form .typelabel-main li .form-control {
   font-size: 12px;
   background: transparent;
-  color: #fff;
+  color: #999;
   min-height: 40px;
   width: 100%;
   border-radius: 8px;
@@ -725,16 +725,16 @@ tr.tabetdat td {
 
 .aff-report.sub-header-tab.refer-earn-sec .nav-pills .nav-link.active {
   border-radius: 5px;
-  color: #fff;
+  color: #999;
 }
 
 .aff-report.sub-header-tab.refer-earn-sec .nav-pills .nav-link {
-  color: #fff;
+  color: #999;
 }
 
 .sub-header-tab.refer-earn-sec .nav-pills .nav-link.active {
   background-color: var(--btn-primary);
-  color: #fff;
+  color: #999;
 }
 
 .sub-header-tab.refer-earn-sec .nav-pills .nav-link {
@@ -759,7 +759,7 @@ tr.tabetdat td {
 }
 
 .af-share-link-wrapper p {
-  color: #fff;
+  color: #999;
   font-size: 16px;
 }
 .af-share-link-sec {

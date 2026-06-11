@@ -11,7 +11,7 @@ const MainLayout = () => {
   const [mobileSidebar, setMobileSidebar] = useState(false);
   const [, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
-  const { group } = useSelector((state) => state.global);
+  const { group, theme } = useSelector((state) => state.global);
   const location = useLocation();
   const ref = useRef();
 
@@ -41,7 +41,7 @@ const MainLayout = () => {
   return (
     <div
       id="app"
-      className="mx-auto h-[calc(var(--vh)_*_100)] overflow-y-auto"
+      className={`mx-auto h-[calc(var(--vh)_*_100)] overflow-y-auto ${theme === "dark" ? "theme-dark" : "theme-light"}`}
       data-v-app
     >
       <div

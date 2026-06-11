@@ -1,6 +1,19 @@
 :root {
-  --color-bg-gradient: linear-gradient(90deg, #ae0001, #ae0001);
+  --primary-bg: #fff;
   --btn-primary: #4aa28a;
-  --color-text-primary: #000;
-  --color-text-secondary: #ae0001;
+  --site-color: #000;
+  --txt-black: #343a40;
+  --text-primary: #08c;
+  --text-secondary: #2d3e50;
+  --top-menu: #fbfafa;
+}
+
+.theme-dark {
+  --primary-bg: #000;
+  --btn-primary: #4aa28a;
+  --site-color: #fff;
+  --txt-black: #989898;
+  --text-primary: #08c;
+  --text-secondary: #2d3e50;
+  --top-menu: #2a2a2a;
 }

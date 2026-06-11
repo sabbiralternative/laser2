@@ -150,7 +150,7 @@ const GameProvider = ({ casinoProviders }) => {
                   }`}
                 >
                   <img
-                    style={{ filter: "invert(1)" }}
+                    style={{ filter: "invert(var(--invert))" }}
                     src={game?.url_thumb}
                     alt="Evolution Gaming"
                     className={`[@supports(-webkit-touch-callout:none)]:h-full object-contain max-h-[80%] w-[80%] `}
