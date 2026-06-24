@@ -1,8 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGroupQuery } from "../../../hooks/group";
 import HorseGreyhound from "./HorseGreyhound";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const Events = () => {
+  const { valueByLanguage } = useLanguage();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const eventTypeId = params.get("eventTypeId");
@@ -10,13 +14,13 @@ const Events = () => {
   const { data } = useGroupQuery({ sportsType: Number(eventTypeId) || 0 });
   const eventName = {
     0: "In-Play",
-    1: "Football",
-    2: "Tennis",
-    4: "Cricket",
-    5: "Kabbadi",
+    1: languageValue(valueByLanguage, LanguageKey.FOOTBALL),
+    2: languageValue(valueByLanguage, LanguageKey.TENNIS),
+    4: languageValue(valueByLanguage, LanguageKey.CRICKET),
+    5: languageValue(valueByLanguage, LanguageKey.KABADDI),
     6: "Politics",
-    7: "Horse",
-    4339: "Greyhound",
+    7: languageValue(valueByLanguage, LanguageKey.HORSE),
+    4339: languageValue(valueByLanguage, LanguageKey.GREYHOUND),
   };
 
   const navigateGameList = (keys) => {

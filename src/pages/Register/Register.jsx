@@ -13,7 +13,11 @@ import toast from "react-hot-toast";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../../context/LanguageProvider";
+import { languageValue } from "../../utils/language";
+import { LanguageKey } from "../../const";
 const Register = () => {
+  const { valueByLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const referralCode = localStorage.getItem("referralCode");
   const { logo } = useLogo();
@@ -308,7 +312,10 @@ const Register = () => {
                                     className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                     data-v-9fd05652
                                   >
-                                    Register
+                                    {languageValue(
+                                      valueByLanguage,
+                                      LanguageKey.REGISTER,
+                                    )}
                                   </div>
                                 </button>
                               </div>
@@ -320,7 +327,10 @@ const Register = () => {
                                   to="/login"
                                   className="cursor-pointer text-black4 font-bold text-xs underline"
                                 >
-                                  Login
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.LOGIN,
+                                  )}
                                 </Link>
                               </div>
                             </div>

@@ -10,7 +10,11 @@ import toast from "react-hot-toast";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useEffect, useState } from "react";
+import { languageValue } from "../../utils/language";
+import { LanguageKey } from "../../const";
+import { useLanguage } from "../../context/LanguageProvider";
 const ForgotPassword = () => {
+  const { valueByLanguage } = useLanguage();
   const { logo } = useLogo();
   const navigate = useNavigate();
   const [timer, setTimer] = useState(null);
@@ -262,7 +266,10 @@ const ForgotPassword = () => {
                                     className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                     data-v-9fd05652
                                   >
-                                    Change Password
+                                    {languageValue(
+                                      valueByLanguage,
+                                      LanguageKey.CHANGE_PASSWORD,
+                                    )}
                                   </div>
                                 </button>
                               </div>

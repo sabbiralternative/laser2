@@ -1,7 +1,12 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const LoginButton = () => {
+  const { valueByLanguage } = useLanguage();
+
   return (
     <Fragment>
       <div
@@ -14,7 +19,7 @@ const LoginButton = () => {
           data-v-e9e2d909
         >
           <p className="block w-full text-center" data-v-e9e2d909>
-            Login
+            {languageValue(valueByLanguage, LanguageKey.LOGIN)}
           </p>
         </Link>
       </div>
@@ -28,7 +33,7 @@ const LoginButton = () => {
           data-v-e9e2d909
         >
           <p className="block w-full text-center" data-v-e9e2d909>
-            Register
+            {languageValue(valueByLanguage, LanguageKey.REGISTER)}
           </p>
         </Link>
       </div>

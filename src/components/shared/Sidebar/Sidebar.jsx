@@ -1,6 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const Sidebar = () => {
+  const { valueByLanguage } = useLanguage();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const eventTypeId = params.get("eventTypeId");
@@ -90,7 +94,7 @@ const Sidebar = () => {
                 </defs>
               </svg>
               <span className="text-xs font-semibold" data-v-5f2997a8>
-                Cricket
+                {languageValue(valueByLanguage, LanguageKey.CRICKET)}
               </span>
             </Link>
           </li>
@@ -122,7 +126,7 @@ const Sidebar = () => {
                 </defs>
               </svg>
               <span className="text-xs font-semibold" data-v-5f2997a8>
-                Football
+                {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
               </span>
             </Link>
           </li>
@@ -166,7 +170,7 @@ const Sidebar = () => {
                 </defs>
               </svg>
               <span className="text-xs font-semibold" data-v-5f2997a8>
-                Tennis
+                {languageValue(valueByLanguage, LanguageKey.TENNIS)}
               </span>
             </Link>
           </li>
@@ -192,7 +196,7 @@ const Sidebar = () => {
                 <path d="m11.24 10.56-2-2c-.1-.1-.2-.18-.31-.26-.22-.14-.47-.24-.72-.28-.13-.03-.25-.04-.38-.04-.51 0-1.02.2-1.41.59l-3.34 3.34c-.41.41-.62.98-.58 1.54 0 .18.04.37.11.55l1.07 2.95-2.92 2.92c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l3.54-3.54v-2.22l1.29 1.23v4.13c0 .55.45 1 1 1 .55 0 1-.45 1-1v-5l-2.12-2.12 2.36-2.36.71.71c1.02 1 2.28 1.69 3.79 1.94.64.11 1.21-.45 1.16-1.1-.03-.48-.4-.87-.87-.94-1.13-.18-2.06-.72-2.79-1.45z" />
               </svg>
               <span className="text-xs font-semibold" data-v-5f2997a8>
-                Kabaddi
+                {languageValue(valueByLanguage, LanguageKey.KABADDI)}
               </span>
             </Link>
           </li>
@@ -222,7 +226,7 @@ const Sidebar = () => {
                 </g>
               </svg>
               <span className="text-xs font-semibold" data-v-5f2997a8>
-                Horse
+                {languageValue(valueByLanguage, LanguageKey.HORSE)}
               </span>
             </Link>
           </li>
@@ -266,7 +270,7 @@ const Sidebar = () => {
                 </defs>
               </svg>{" "}
               <span className="text-xs font-semibold" data-v-5f2997a8>
-                Greyhound
+                {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
               </span>
             </Link>
           </li>

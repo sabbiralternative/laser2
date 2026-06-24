@@ -10,7 +10,11 @@ import toast from "react-hot-toast";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useState } from "react";
+import { useLanguage } from "../../context/LanguageProvider";
+import { languageValue } from "../../utils/language";
+import { LanguageKey } from "../../const";
 const Login = () => {
+  const { valueByLanguage } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
   const { logo } = useLogo();
   const { closePopupForForever } = useSelector((state) => state.global);
@@ -236,7 +240,10 @@ const Login = () => {
                                     className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                     data-v-9fd05652
                                   >
-                                    Login
+                                    {languageValue(
+                                      valueByLanguage,
+                                      LanguageKey.LOGIN,
+                                    )}
                                   </div>
                                 </button>
                                 <button
@@ -261,7 +268,10 @@ const Login = () => {
                                   to="/register"
                                   className="cursor-pointer text-black4 font-bold text-xs underline"
                                 >
-                                  Sign Up
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.REGISTER,
+                                  )}
                                 </Link>
                               </div>
                               <div className="flex  gap-3 mt-3" data-v-9fd05652>
