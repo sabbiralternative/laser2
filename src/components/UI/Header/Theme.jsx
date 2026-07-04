@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../../../redux/features/global/globalSlice";
 
-const Theme = () => {
+const Theme = ({ isMobile }) => {
   const { theme } = useSelector((state) => state.global);
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const Theme = () => {
   return (
     <div
       onClick={handleToggleTheme}
-      className="text-balance-expo-txt p-1 flex items-center rounded-[3.25rem] border-border-menu border-[0.063rem] border-solid box-border h-[2.5rem] w-max bg-balance-expo-bg hidden md:flex"
+      className={`text-balance-expo-txt p-1 flex items-center rounded-[3.25rem] border-border-menu border-[0.063rem] border-solid box-border h-[2.5rem] w-max bg-balance-expo-bg  ${isMobile ? "md:hidden" : "hidden md:flex"}`}
       data-v-e9e2d909
     >
       <div

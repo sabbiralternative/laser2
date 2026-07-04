@@ -6,6 +6,7 @@ import { Settings } from "../../../api";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import Theme from "../../UI/Header/Theme";
 
 const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
   const { valueByLanguage } = useLanguage();
@@ -350,7 +351,8 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
           </li>
         </ul>
         <div className="pl-6" data-v-2d5d078e>
-          <div
+          <Theme isMobile={true} />
+          {/* <div
             className="text-balance-expo-txt p-1 flex items-center rounded-[3.25rem] border-border-menu border-[0.063rem] border-solid box-border h-[2.5rem] w-max bg-balance-expo-bg"
             data-v-2d5d078e
           >
@@ -493,7 +495,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </g>
               </svg>
             </div>
-          </div>
+          </div> */}
         </div>
         <div
           className="w-full flex gap-4 mt-8 items-center justify-center"
