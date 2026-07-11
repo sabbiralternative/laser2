@@ -15,6 +15,7 @@ import { Settings } from "../../api";
 import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
 import EventTab from "../../components/modules/EventDetails/EventTab";
 import Score from "../../components/modules/EventDetails/Score";
+import Premium from "../../components/modules/EventDetails/Premium";
 
 const EventDetails = () => {
   const [tab, setTab] = useState("market");
@@ -189,7 +190,7 @@ const EventDetails = () => {
               {eventTypeId == 4 && data?.iscore && tab === "score" && (
                 <Score iscore={data?.iscore} />
               )}
-              {data?.score && data?.score?.tracker !== null && tab === "tv" && (
+              {data?.score && data?.score?.tracker && tab === "tv" && (
                 <div className="w-full overflow-hidden h-[125px]">
                   <iframe
                     id="videoComponent"
@@ -214,6 +215,9 @@ const EventDetails = () => {
                   <div data-v-8e891727>
                     <div className="bets-wrap mb-10" data-v-8e891727>
                       {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
+                      {data?.premium && data?.premium?.eventId && (
+                        <Premium premium={data?.premium} />
+                      )}
                       {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
                       {data?.result?.length > 0 && (
                         <Fancy data={data?.result} />
