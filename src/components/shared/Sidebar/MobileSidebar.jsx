@@ -7,6 +7,7 @@ import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import Theme from "../../UI/Header/Theme";
+import { eventNameList } from "../../../static/event-name-list";
 
 const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
   const { valueByLanguage } = useLanguage();
@@ -316,7 +317,22 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
               </span>
             </a>
           </li>
-
+          {eventNameList.map((item) => {
+            return (
+              <li key={item.id} className="sub-menu active" data-v-2d5d078e>
+                <a
+                  onClick={() => handleNavigate(`/?eventTypeId=${item.id}`)}
+                  className="sidebar-sport-tag items-center cursor-pointer"
+                  data-v-2d5d078e
+                >
+                  <img src={item.image} className="size-7" alt="" />
+                  <span className="text-sm font-semibold" data-v-2d5d078e>
+                    {item.name}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
           <li data-v-2d5d078e>
             <a href="/casino" className="sidebar-sport-tag" data-v-2d5d078e>
               <svg

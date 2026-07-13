@@ -3,6 +3,7 @@ import { latestEvent } from "../../../static/latest-event";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import { eventNameList } from "../../../static/event-name-list";
 
 const EventListTab = () => {
   const { valueByLanguage } = useLanguage();
@@ -317,6 +318,20 @@ const EventListTab = () => {
           Politics
         </a>
       </li>
+      {eventNameList.map((item) => {
+        return (
+          <li key={item.id} data-v-ae7b435d>
+            <a
+              onClick={() => navigate(`?eventTypeId=${item.id}`)}
+              className={` m-link py-1 font-semibold leading-[120%] text-center flex align-middle justify-center items-center gap-2 cursor-pointer h-full ${eventTypeId == item.id ? "rounded-border text-btn-primary" : ""}`}
+              data-v-ae7b435d
+            >
+              <img src={item.image} alt="" className="size-5" />
+              {item.name}
+            </a>
+          </li>
+        );
+      })}
     </ul>
   );
 };

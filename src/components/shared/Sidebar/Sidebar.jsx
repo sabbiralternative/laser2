@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import { eventNameList } from "../../../static/event-name-list";
 
 const Sidebar = () => {
   const { valueByLanguage } = useLanguage();
@@ -300,7 +301,22 @@ const Sidebar = () => {
               </span>
             </Link>
           </li>
-
+          {eventNameList.map((item) => {
+            return (
+              <li key={item.id} className="sub-menu active" data-v-5f2997a8>
+                <Link
+                  to={`/?eventTypeId=${item.id}`}
+                  className={`flex flex-col justify-center items-center w-full ${eventTypeId === item.id ? "text-btn-primary router-link-active" : ""}`}
+                  data-v-5f2997a8
+                >
+                  <img className="size-7" src={item.image} alt="" />
+                  <span className="text-xs font-semibold" data-v-5f2997a8>
+                    {item.name}
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
           <li data-v-5f2997a8>
             <Link
               to="/casino"
