@@ -215,9 +215,7 @@ const EventDetails = () => {
                   <div data-v-8e891727>
                     <div className="bets-wrap mb-10" data-v-8e891727>
                       {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
-                      {data?.premium && data?.premium?.eventId && (
-                        <Premium premium={data?.premium} />
-                      )}
+
                       {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
                       {data?.result?.length > 0 && (
                         <Fancy data={data?.result} />
@@ -226,6 +224,9 @@ const EventDetails = () => {
                         <HorseGreyhoundEventDetails data={data?.result} />
                       ) : null}
                       {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
+                      {data?.premium && data?.premium?.eventId && (
+                        <Premium premium={data?.premium} />
+                      )}
                     </div>
                   </div>
                 </section>
