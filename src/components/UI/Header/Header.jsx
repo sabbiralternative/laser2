@@ -23,7 +23,7 @@ import { useLanguage } from "../../../context/LanguageProvider";
 import Language from "../../modals/Language";
 
 const Header = ({ setMobileSidebar }) => {
-  const { language, setLanguage } = useLanguage();
+  const { setLanguage } = useLanguage();
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
   const [showRightDrawer, setShowRightDrawer] = useState(false);
@@ -233,7 +233,7 @@ const Header = ({ setMobileSidebar }) => {
                         <path d="M11.5 3a17 17 0 0 0 0 18" />
                         <path d="M12.5 3a17 17 0 0 1 0 18" />
                       </svg>
-                      {language}
+                      {/* {language} */}
                       <svg
                         fill="currentColor"
                         width={16}

@@ -3,6 +3,7 @@ import Events from "../../components/modules/Home/Events";
 import GameProvider from "../../components/modules/Home/GameProvider";
 import Mac88 from "../../components/modules/Home/Mac88";
 import TrendingCasino from "../../components/modules/Home/TrendingCasino";
+import WhatsApp from "../../components/modules/Home/WhatsApp";
 import { useLotusHomeLobby } from "../../hooks/lotusHomeLobby";
 import useGetNotification from "../../hooks/useGetNotification";
 
@@ -14,6 +15,7 @@ const Home = () => {
       className="block relative w-full md:w-[calc(100%-5.625rem)] md:pl-[0.375rem] font-cera-round-pro pt-0"
       data-v-c78ea7eb
     >
+      <WhatsApp />
       {notification?.length > 0 && (
         <div
           className="overflow-hidden whitespace-nowrap w-full text-site-color py-2 mt-2.5 bg-top-menu border-y border-card-border"
