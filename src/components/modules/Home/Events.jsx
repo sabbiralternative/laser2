@@ -4,8 +4,12 @@ import HorseGreyhound from "./HorseGreyhound";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import { useState } from "react";
+import LiveVirtual from "./LiveVirtual";
+import { filterLiveVirtual } from "../../../utils/filter-live-virtual";
 
 const Events = () => {
+  const [liveVirtual, setLiveVirtual] = useState([]);
   const { valueByLanguage } = useLanguage();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -27,23 +31,31 @@ const Events = () => {
     navigate(`/event-details/${data[keys]?.eventTypeId}/${keys}`);
   };
 
-  const sortedData = data
-    ? Object.entries(data)
-        .filter(([, value]) => value.visible === true)
-        .sort(([, a], [, b]) => {
-          return b.inPlay - a.inPlay;
-        })
-    : [];
-
+  // const sortedData = data
+  //   ? Object.entries(data)
+  //       .filter(([, value]) => value.visible === true)
+  //       .sort(([, a], [, b]) => {
+  //         return b.inPlay - a.inPlay;
+  //       })
+  //   : [];
+  const groupedData = filterLiveVirtual(
+    liveVirtual,
+    Number(eventTypeId) || 0,
+    data,
+  );
   return (
     <div className="block py-1 px-2">
       <h5 className="font-bold flex pt-[0.938rem] pb-[0.625rem] text-[1rem] leading-[120%] self-stretch">
-        <span className="ml-1 inline-block">
+        <span className="ml-1  flex items-center gap-x-4">
           {eventName[eventTypeId]} (
           {eventTypeId != 7 && eventTypeId != 4339
-            ? sortedData?.length
+            ? groupedData?.length
             : data?.[0]?.childs?.length}
           )
+          <LiveVirtual
+            setLiveVirtual={setLiveVirtual}
+            category={Number(eventTypeId) || 0}
+          />
         </span>
       </h5>
       {(eventTypeId == 7 || eventTypeId == 4339) && data?.length > 0 && (
@@ -57,8 +69,8 @@ const Events = () => {
         <div>
           <div className="flex justify-center">
             <ul className="rounded-xl w-full">
-              {sortedData?.length > 0 &&
-                sortedData?.map(([keys, value]) => {
+              {groupedData?.length > 0 &&
+                groupedData?.map(([keys, value]) => {
                   return (
                     <li
                       onClick={() => navigateGameList(keys)}
