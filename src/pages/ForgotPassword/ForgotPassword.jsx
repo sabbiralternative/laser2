@@ -10,11 +10,10 @@ import toast from "react-hot-toast";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
-import { useLanguage } from "../../context/LanguageProvider";
+import useLanguage from "../../hooks/use-language";
 const ForgotPassword = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { logo } = useLogo();
   const navigate = useNavigate();
   const [timer, setTimer] = useState(null);
@@ -152,7 +151,7 @@ const ForgotPassword = () => {
                                     className="absolute bottom-0 right-0 text-btn-primary  bg-btn-primary w-[90px] py-3  rounded-[1.875rem]   flex flex-row items-center justify-center  box-border  text-center text-base text-white !cursor-text"
                                     type="button"
                                   >
-                                    Retry in {timer}
+                                    {getLanguage(LanguageKey.RETRY_IN)} {timer}
                                   </div>
                                 ) : (
                                   <button
@@ -163,7 +162,7 @@ const ForgotPassword = () => {
                                     className="absolute bottom-0 right-0 text-btn-primary  bg-btn-primary w-[90px] py-3  rounded-[1.875rem]   flex flex-row items-center justify-center  box-border cursor-pointer text-center text-base text-white"
                                     type="button"
                                   >
-                                    Get OTP
+                                    {getLanguage(LanguageKey.GET_OTP)}
                                   </button>
                                 )}
                               </div>
@@ -266,10 +265,7 @@ const ForgotPassword = () => {
                                     className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                     data-v-9fd05652
                                   >
-                                    {languageValue(
-                                      valueByLanguage,
-                                      LanguageKey.CHANGE_PASSWORD,
-                                    )}
+                                    {getLanguage(LanguageKey.CHANGE_PASSWORD)}
                                   </div>
                                 </button>
                               </div>

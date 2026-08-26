@@ -17,8 +17,11 @@ import EventTab from "../../components/modules/EventDetails/EventTab";
 import Score from "../../components/modules/EventDetails/Score";
 import Premium from "../../components/modules/EventDetails/Premium";
 import ToggleButtons from "../../components/modules/EventDetails/ToggleButtons";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const EventDetails = () => {
+  const { getLanguage } = useLanguage();
   const [fancyPremiumTab, setFancyPremiumTab] = useState("");
   const [tab, setTab] = useState("market");
   const [sportsVideo, { data: iframe }] = useVideoMutation();
@@ -274,7 +277,7 @@ const EventDetails = () => {
                       className="w-full py-1 text-sm px-1 font-bold"
                       data-v-8e891727
                     >
-                      Current Bet
+                      {getLanguage(LanguageKey.CURRENT_BETS)}
                     </div>
                     <div className="px-1" data-v-8e891727>
                       <div className data-v-8e891727>
@@ -282,7 +285,7 @@ const EventDetails = () => {
                           className="text-sm my-1 p-4 bg-top-menu rounded-lg"
                           data-v-8e891727
                         >
-                          You have no matched bets.
+                          {getLanguage(LanguageKey.YOU_HAVE_NO_MATCHED_BETS)}.
                         </div>
                       </div>
                     </div>

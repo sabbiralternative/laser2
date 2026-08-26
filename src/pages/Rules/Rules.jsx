@@ -1,4 +1,6 @@
 import { useState } from "react";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const ArrowDown = () => {
   return (
@@ -62,6 +64,7 @@ const ArrowUp = () => {
 };
 
 const Rules = () => {
+  const { getLanguage } = useLanguage();
   const [index, setIndex] = useState(0);
 
   const handleClick = (i) => {
@@ -81,7 +84,7 @@ const Rules = () => {
           className="w-full relative bg-getitem-bg h-[3.125rem] my-1 px-3 flex items-center text-[1.1rem] font-bold"
           data-v-5b48a53d
         >
-          Rules
+          {getLanguage(LanguageKey.RULES)}
         </div>
         <div
           className="p-3 bg-ghost-white border border-jupiter rounded-md mx-3 md:mx-0 text-rule"

@@ -19,7 +19,10 @@ import {
   handleDecreasePrice,
   handleIncreasePrice,
 } from "../../../utils/editBetSlipPrice";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 const MobileBetSlip = ({ currentPlaceBetEvent }) => {
+  const { getLanguage } = useLanguage();
   const { closePopupForForever } = useSelector((state) => state.global);
   const [isCashOut, setIsCashOut] = useState(false);
   const [profit, setProfit] = useState(0);
@@ -223,9 +226,11 @@ const MobileBetSlip = ({ currentPlaceBetEvent }) => {
           </div>
           <div className="flex flex-col items-center justify-center text-white">
             <div className="text-sm font-semibold">
-              Your bet is being processed...
+              {getLanguage(LanguageKey.YOUR_BET_IS_BEING_PROCESSED)}...
             </div>
-            <div className="text-xs text-suspendedBg">Please wait</div>
+            <div className="text-xs text-suspendedBg">
+              {getLanguage(LanguageKey.PLEASE_WAIT)}
+            </div>
           </div>
         </div>
       )}
@@ -248,7 +253,7 @@ const MobileBetSlip = ({ currentPlaceBetEvent }) => {
                 className="block mb-2 text-[0.725rem] font-medium text-black"
                 data-v-3334cc92
               >
-                ODDS:
+                {getLanguage(LanguageKey.ODDS)}:
               </label>
               <div className="relative" data-v-3334cc92>
                 {!placeBetValues?.isWeak && (
@@ -362,7 +367,7 @@ const MobileBetSlip = ({ currentPlaceBetEvent }) => {
                 className="block mb-2 text-[0.725rem] font-medium text-black"
                 data-v-3334cc92
               >
-                STAKE:
+                {getLanguage(LanguageKey.STAKE)}:
               </label>
               <input
                 onChange={(e) => {
@@ -405,7 +410,7 @@ const MobileBetSlip = ({ currentPlaceBetEvent }) => {
                 data-v-3334cc92
               >
                 <p className="m-0 font-medium" data-v-3334cc92>
-                  Cancel
+                  {getLanguage(LanguageKey.CANCEL)}
                 </p>
               </div>
             </button>
@@ -423,7 +428,7 @@ const MobileBetSlip = ({ currentPlaceBetEvent }) => {
                   className="flex gap-2 items-center justify-center m-0 font-medium"
                   data-v-3334cc92
                 >
-                  Place Bet
+                  {getLanguage(LanguageKey.PLACE_BET)}
                 </p>
               </div>
             </button>

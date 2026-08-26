@@ -19,8 +19,8 @@ import UserButton from "./UserButton";
 import LoginButton from "./LoginButton";
 import RightDrawer from "./RightDrawer";
 import Search from "./Search";
-import { useLanguage } from "../../../context/LanguageProvider";
 import Language from "../../modals/Language";
+import useLanguage from "../../../hooks/use-language";
 
 const Header = ({ setMobileSidebar }) => {
   const { setLanguage } = useLanguage();

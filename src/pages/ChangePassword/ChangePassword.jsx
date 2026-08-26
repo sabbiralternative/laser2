@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../redux/features/auth/authApi";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const ChangePassword = () => {
+  const { getLanguage } = useLanguage();
   const [handleChangePassword] = useChangePasswordMutation();
 
   const { register, handleSubmit } = useForm();
@@ -18,7 +21,7 @@ const ChangePassword = () => {
     };
 
     const res = await handleChangePassword(payload).unwrap();
-    console.log(res);
+
     if (res.success) {
       localStorage.removeItem("changePassword");
       toast.success(res?.result?.message);
@@ -37,7 +40,7 @@ const ChangePassword = () => {
           className="w-full relative bg-getitem-bg h-[3.125rem] my-1 px-3 flex items-center text-[1.1rem] font-bold"
           data-v-7b3ac909
         >
-          Change Password
+          {getLanguage(LanguageKey.CHANGE_PASSWORD)}
         </div>
         <section
           className="h-full1 gradient-form change-pass-box md:h-screen1 font-cera-pro min-h-screen"
@@ -70,7 +73,7 @@ const ChangePassword = () => {
                               className="text-xs ml-1 font-medium"
                               data-v-7b3ac909
                             >
-                              Current Password
+                              {getLanguage(LanguageKey.NEW_PASSWORD)}
                             </label>
                             <input
                               {...register("password", { required: true })}
@@ -118,7 +121,7 @@ const ChangePassword = () => {
                               className="text-xs ml-1 font-medium"
                               data-v-7b3ac909
                             >
-                              New Password
+                              {getLanguage(LanguageKey.NEW_PASSWORD)}
                             </label>
                             <input
                               {...register("newPassword", {
@@ -168,7 +171,7 @@ const ChangePassword = () => {
                               className="text-xs ml-1 font-medium"
                               data-v-7b3ac909
                             >
-                              Confirm Password
+                              {getLanguage(LanguageKey.CONFIRM_PASSWORD)}
                             </label>
                             <input
                               {...register("newPasswordConfirm", {
@@ -225,7 +228,7 @@ const ChangePassword = () => {
                                 className="w-[21.625rem] relative leading-[120%] font-semibold inline-block shrink-0"
                                 data-v-7b3ac909
                               >
-                                Save
+                                {getLanguage(LanguageKey.SAVE)}
                               </div>
                             </button>
                           </div>

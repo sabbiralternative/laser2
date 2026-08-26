@@ -10,11 +10,10 @@ import toast from "react-hot-toast";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useState } from "react";
-import { useLanguage } from "../../context/LanguageProvider";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 const Login = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
   const { logo } = useLogo();
   const { closePopupForForever } = useSelector((state) => state.global);
@@ -240,10 +239,7 @@ const Login = () => {
                                     className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                     data-v-9fd05652
                                   >
-                                    {languageValue(
-                                      valueByLanguage,
-                                      LanguageKey.LOGIN,
-                                    )}
+                                    {getLanguage(LanguageKey.LOGIN)}
                                   </div>
                                 </button>
                                 <button
@@ -256,7 +252,7 @@ const Login = () => {
                                     className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                     data-v-9fd05652
                                   >
-                                    Login with Demo ID
+                                    {getLanguage(LanguageKey.DEMO_LOGIN)}
                                   </div>
                                 </button>
                               </div>
@@ -268,10 +264,7 @@ const Login = () => {
                                   to="/register"
                                   className="cursor-pointer text-black4 font-bold text-xs underline"
                                 >
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.REGISTER,
-                                  )}
+                                  {getLanguage(LanguageKey.REGISTER)}
                                 </Link>
                               </div>
                               <div className="flex  gap-3 mt-3" data-v-9fd05652>
@@ -289,7 +282,7 @@ const Login = () => {
                                         className="w-full relative leading-[120%] font-semibold inline-block shrink-0"
                                         data-v-9fd05652
                                       >
-                                        WhatsApp
+                                        {getLanguage(LanguageKey.WHATSAPP)}
                                       </div>
                                     </button>
                                   )}
@@ -305,7 +298,7 @@ const Login = () => {
                                       data-v-9fd05652
                                     >
                                       {" "}
-                                      Download .apk
+                                      {getLanguage(LanguageKey.DOWNLOAD_APK)}
                                     </div>
                                   </button>
                                 )}

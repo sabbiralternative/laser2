@@ -1,16 +1,15 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGroupQuery } from "../../../hooks/group";
 import HorseGreyhound from "./HorseGreyhound";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { useState } from "react";
 import LiveVirtual from "./LiveVirtual";
 import { filterLiveVirtual } from "../../../utils/filter-live-virtual";
+import useLanguage from "../../../hooks/use-language";
 
 const Events = () => {
   const [liveVirtual, setLiveVirtual] = useState([]);
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const eventTypeId = params.get("eventTypeId");
@@ -18,13 +17,13 @@ const Events = () => {
   const { data } = useGroupQuery({ sportsType: Number(eventTypeId) || 0 });
   const eventName = {
     0: "In-Play",
-    1: languageValue(valueByLanguage, LanguageKey.FOOTBALL),
-    2: languageValue(valueByLanguage, LanguageKey.TENNIS),
-    4: languageValue(valueByLanguage, LanguageKey.CRICKET),
-    5: languageValue(valueByLanguage, LanguageKey.KABADDI),
+    1: getLanguage(LanguageKey.FOOTBALL),
+    2: getLanguage(LanguageKey.TENNIS),
+    4: getLanguage(LanguageKey.CRICKET),
+    5: getLanguage(LanguageKey.KABADDI),
     6: "Politics",
-    7: languageValue(valueByLanguage, LanguageKey.HORSE),
-    4339: languageValue(valueByLanguage, LanguageKey.GREYHOUND),
+    7: getLanguage(LanguageKey.HORSE),
+    4339: getLanguage(LanguageKey.GREYHOUND),
   };
 
   const navigateGameList = (keys) => {
@@ -110,7 +109,7 @@ const Events = () => {
                                   className="md:ml-4 md:pl-4 text-[0.785rem] font-medium text-[#999]"
                                   data-v-b7f33f7c
                                 >
-                                  In-Play{" "}
+                                  {getLanguage(LanguageKey.IN_PLAY)}{" "}
                                 </span>
                               )}
                             </h4>

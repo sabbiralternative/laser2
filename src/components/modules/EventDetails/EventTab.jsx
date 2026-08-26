@@ -1,4 +1,8 @@
+import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
+
 const EventTab = ({ tab, setTab }) => {
+  const { getLanguage } = useLanguage();
   return (
     <div
       className="market-page-tabs relative h-[4.375rem] overflow-x-auto text-center text-sm font-semibold bg-top-menu rounded-[0.625rem] border border-card-border __mb-2"
@@ -41,7 +45,7 @@ const EventTab = ({ tab, setTab }) => {
               </clipPath>
             </defs>
           </svg>{" "}
-          Markets
+          {getLanguage(LanguageKey.MARKET)}
         </button>
         <button
           onClick={() => setTab("open-bets")}
@@ -121,7 +125,7 @@ const EventTab = ({ tab, setTab }) => {
               </clipPath>
             </defs>
           </svg>{" "}
-          Open Bets
+          {getLanguage(LanguageKey.OPEN_BETS)}
         </button>
         <button
           onClick={() => setTab("tv")}

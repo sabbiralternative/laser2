@@ -1,6 +1,9 @@
+import { LanguageKey } from "../../../const";
 import useBalance from "../../../hooks/balance";
+import useLanguage from "../../../hooks/use-language";
 
 const Balance = () => {
+  const { getLanguage } = useLanguage();
   const { data } = useBalance();
   return (
     <div
@@ -15,13 +18,13 @@ const Balance = () => {
           className="relative text-[1rem] font-medium text-left pr-3"
           data-v-e9e2d909
         >
-          Balance: {data?.availBalance}
+          {getLanguage(LanguageKey.BALANCE)}: {data?.availBalance}
         </div>
         <div
           className="relative text-[1rem] font-medium text-left pl-3 cursor-pointer"
           data-v-e9e2d909
         >
-          Exposure: {data?.deductedExposure}
+          {getLanguage(LanguageKey.EXPOSURE)}: {data?.deductedExposure}
         </div>
       </div>
     </div>

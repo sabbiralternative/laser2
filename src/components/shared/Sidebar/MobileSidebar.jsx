@@ -3,14 +3,13 @@ import useCloseModalClickOutside from "../../../hooks/closeModal";
 import { useNavigate } from "react-router-dom";
 import { useLogo } from "../../../context/ApiProvider";
 import { Settings } from "../../../api";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import Theme from "../../UI/Header/Theme";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
 
 const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { logo } = useLogo();
   const ref = useRef();
   const navigate = useNavigate();
@@ -82,7 +81,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </defs>
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                In Play
+                {getLanguage(LanguageKey.IN_PLAY)}
               </span>
             </a>
           </li>
@@ -115,7 +114,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </defs>
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                Favorites
+                {getLanguage(LanguageKey.FAVORITES)}
               </span>
             </a>
           </li>
@@ -156,7 +155,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </defs>
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                {getLanguage(LanguageKey.CRICKET)}
               </span>
             </a>
           </li>
@@ -188,7 +187,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </defs>
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                {getLanguage(LanguageKey.FOOTBALL)}
               </span>
             </a>
           </li>
@@ -232,7 +231,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </defs>
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                {getLanguage(LanguageKey.TENNIS)}
               </span>
             </a>
           </li>
@@ -258,7 +257,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 <path d="m11.24 10.56-2-2c-.1-.1-.2-.18-.31-.26-.22-.14-.47-.24-.72-.28-.13-.03-.25-.04-.38-.04-.51 0-1.02.2-1.41.59l-3.34 3.34c-.41.41-.62.98-.58 1.54 0 .18.04.37.11.55l1.07 2.95-2.92 2.92c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l3.54-3.54v-2.22l1.29 1.23v4.13c0 .55.45 1 1 1 .55 0 1-.45 1-1v-5l-2.12-2.12 2.36-2.36.71.71c1.02 1 2.28 1.69 3.79 1.94.64.11 1.21-.45 1.16-1.1-.03-.48-.4-.87-.87-.94-1.13-.18-2.06-.72-2.79-1.45z" />
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                {getLanguage(LanguageKey.KABADDI)}
               </span>
             </a>
           </li>
@@ -287,7 +286,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </g>
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                {languageValue(valueByLanguage, LanguageKey.HORSE)}
+                {getLanguage(LanguageKey.HORSE)}
               </span>
             </a>
           </li>
@@ -313,7 +312,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 />
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                Politics
+                {getLanguage(LanguageKey.POLITICS)}
               </span>
             </a>
           </li>
@@ -327,7 +326,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 >
                   <img src={item.image} className="size-7" alt="" />
                   <span className="text-sm font-semibold" data-v-2d5d078e>
-                    {item.name}
+                    {getLanguage(item.name)}
                   </span>
                 </a>
               </li>
@@ -361,7 +360,7 @@ const MobileSidebar = ({ mobileSidebar, setMobileSidebar }) => {
                 </defs>
               </svg>
               <span className="text-sm font-semibold" data-v-2d5d078e>
-                Casino
+                {getLanguage(LanguageKey.CASINO)}
               </span>
             </a>
           </li>

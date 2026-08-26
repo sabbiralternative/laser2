@@ -6,8 +6,11 @@ import { useNavigate } from "react-router-dom";
 // import toast from "react-hot-toast";
 // import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const GameProvider = ({ casinoProviders }) => {
+  const { getLanguage } = useLanguage();
   const [showSeeAll, setShowSeeAll] = useState(false);
   const ref = useRef();
   const navigate = useNavigate();
@@ -45,7 +48,7 @@ const GameProvider = ({ casinoProviders }) => {
     casinoProviders &&
     casinoProviders?.length > 0 &&
     casinoProviders?.sort((a, b) => a.sort - b.sort);
-  console.log(sortedData);
+
   return (
     <>
       {/* {showWarning && (
@@ -76,7 +79,7 @@ const GameProvider = ({ casinoProviders }) => {
                   </defs>
                 </svg>
                 <span className="text-base text-text_color_primary1 font-extrabold font-medium font-extrabold">
-                  Game Providers
+                  {getLanguage(LanguageKey.GAME_PROVIDERS)}
                 </span>
               </div>
             </div>
@@ -86,7 +89,9 @@ const GameProvider = ({ casinoProviders }) => {
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato bg-bg_text_brand_secondary text-transparent bg-clip-text font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200 cursor-pointer"
                 type="button"
               >
-                {showSeeAll ? "See Less" : "See All"}
+                {showSeeAll
+                  ? getLanguage(LanguageKey.SEE_LESS)
+                  : getLanguage(LanguageKey.SEE_ALL)}
               </button>
               <button
                 onClick={() => scrollToLeft(ref)}

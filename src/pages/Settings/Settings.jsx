@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useEditButtonValuesMutation } from "../../redux/features/events/events";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Settings = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const [editButtonValue] = useEditButtonValuesMutation();
   const stakes = JSON.parse(localStorage.getItem("buttonValue"));
@@ -39,7 +42,7 @@ const Settings = () => {
       data-v-c78ea7eb
     >
       <div className="w-full relative bg-getitem-bg h-[3.125rem] my-1 px-3 flex items-center text-[1.1rem] font-bold">
-        Settings
+        {getLanguage(LanguageKey.SETTINGS)}
       </div>
       <div className="block relative w-full py-1 px-3 md:px-0 m-auto font-cera-round-pro">
         <form
@@ -68,7 +71,7 @@ const Settings = () => {
               className="w-full md:w-auto relative rounded-[1.875rem] bg-btn-primary h-[2.375rem] flex flex-row items-center justify-center py-[0.688rem] px-[4.313rem] box-border text-center text-base text-white"
             >
               <div className="w-[21.625rem] md:w-auto relative leading-[120%] font-semibold inline-block shrink-0">
-                Ok
+                {getLanguage(LanguageKey.OK)}
               </div>
             </button>
           </div>

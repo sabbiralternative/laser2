@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-
 import { useAccountStatement } from "../../hooks/accountStatement";
 import { from_date, to_date } from "../../utils/default-date";
 import ShowImage from "../../components/modals/ShowImage/ShowImage";
 import Complaint from "../../components/modals/Complaint/Complaint";
 import { Settings } from "../../api";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const DepositReport = () => {
+  const { getLanguage } = useLanguage();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
 
@@ -68,7 +70,7 @@ const DepositReport = () => {
                               >
                                 <div className="flex justify-between items-start text-[10px] font-bold h-full">
                                   <div className="text-base px-3 py-1">
-                                    Deposit
+                                    {getLanguage(LanguageKey.DEPOSIT)}
                                   </div>
                                   <div
                                     className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-medium text-primary rounded-bl h-full   
@@ -124,7 +126,7 @@ const DepositReport = () => {
                                         }
                                         className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-primary rounded-tl h-fit tracking-normal"
                                       >
-                                        Report Issue
+                                        {getLanguage(LanguageKey.REPORT_ISSUE)}
                                       </button>
                                     )}
                                   </span>
@@ -141,7 +143,7 @@ const DepositReport = () => {
                 </>
               ) : (
                 <div className="flex items-center justify-center pt-20">
-                  <p>No transaction yet!</p>
+                  <p>{getLanguage(LanguageKey.NO_TRANSACTION_YET)}!</p>
                 </div>
               )}
             </div>

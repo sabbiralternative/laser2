@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import { logout } from "../../../redux/features/auth/authSlice";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import { Settings } from "../../../api";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const RightDrawer = ({ setShowRightDrawer }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const ref = useRef();
   const dispatch = useDispatch();
@@ -51,7 +50,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
               className="relative text-[#999] text-left text-sm font-medium"
               data-v-e9e2d909
             >
-              Balance:{" "}
+              {getLanguage(LanguageKey.BALANCE)}:{" "}
             </div>
             <div
               className="relative text-site-color text-left text-sm font-semibold lable-menu"
@@ -69,7 +68,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
               className="relative text-[#999] text-left text-sm font-medium"
               data-v-e9e2d909
             >
-              Exposure:{" "}
+              {getLanguage(LanguageKey.EXPOSURE)}:{" "}
             </div>
             <div
               className="relative text-site-color text-left text-sm font-semibold lable-menu"
@@ -97,7 +96,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/home.7878ce71.svg"
                 data-v-e9e2d909
               />{" "}
-              {languageValue(valueByLanguage, LanguageKey.HOME)}
+              {getLanguage(LanguageKey.HOME)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -112,7 +111,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/file.99c55217.svg"
                 data-v-e9e2d909
               />
-              {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+              {getLanguage(LanguageKey.DEPOSIT)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -127,7 +126,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/file.99c55217.svg"
                 data-v-e9e2d909
               />
-              {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
+              {getLanguage(LanguageKey.WITHDRAW)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -142,7 +141,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/file.99c55217.svg"
                 data-v-e9e2d909
               />
-              Deposit Report
+              {getLanguage(LanguageKey.DEPOSIT_STATEMENT)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -157,7 +156,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/file.99c55217.svg"
                 data-v-e9e2d909
               />
-              Withdraw Report
+              {getLanguage(LanguageKey.WITHDRAW_STATMENT)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -172,7 +171,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/histry.7f697b93.svg"
                 data-v-e9e2d909
               />{" "}
-              Open Bets
+              {getLanguage(LanguageKey.OPEN_BETS)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -187,7 +186,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/Favorite.f4874cce.svg"
                 data-v-e9e2d909
               />{" "}
-              Betting Profit & Loss
+              {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
             </Link>
           </li>
 
@@ -203,7 +202,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/casino.5ffa54af.svg"
                 data-v-e9e2d909
               />{" "}
-              {languageValue(valueByLanguage, LanguageKey.MY_BANK_DETAILS)}
+              {getLanguage(LanguageKey.MY_BANK_DETAILS)}
             </Link>
           </li>
           {Settings.referral && (
@@ -219,7 +218,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                   src="/assets/casino.5ffa54af.svg"
                   data-v-e9e2d909
                 />{" "}
-                Affiliate
+                {getLanguage(LanguageKey.AFFILIATE)}
               </Link>
             </li>
           )}
@@ -236,7 +235,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/casino.5ffa54af.svg"
                 data-v-e9e2d909
               />{" "}
-              {languageValue(valueByLanguage, LanguageKey.BONUS_STATEMENT)}
+              {getLanguage(LanguageKey.BONUS_STATEMENT)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -251,7 +250,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/casino.5ffa54af.svg"
                 data-v-e9e2d909
               />{" "}
-              Promos & Bonus
+              {getLanguage(LanguageKey.PROMOTION_AND_BONUSES)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -266,7 +265,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/casino.5ffa54af.svg"
                 data-v-e9e2d909
               />{" "}
-              Lossback Bonus
+              {getLanguage(LanguageKey.LOSSBACK_BONUS)}
             </Link>
           </li>
           {closePopupForForever && (
@@ -282,7 +281,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                   src="/assets/casino.5ffa54af.svg"
                   data-v-e9e2d909
                 />{" "}
-                App Only Bonus
+                {getLanguage(LanguageKey.APP_ONLY_BONUS)}
               </Link>
             </li>
           )}
@@ -298,7 +297,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/lock.414259ed.svg"
                 data-v-e9e2d909
               />{" "}
-              {languageValue(valueByLanguage, LanguageKey.CHANGE_PASSWORD)}
+              {getLanguage(LanguageKey.CHANGE_PASSWORD)}
             </Link>
           </li>
           <li data-v-e9e2d909>
@@ -313,7 +312,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/settings.96eab642.svg"
                 data-v-e9e2d909
               />{" "}
-              Set Button Value
+              {getLanguage(LanguageKey.EDIT_STAKE)}
             </Link>
           </li>
           {Settings.apk_link && (
@@ -329,7 +328,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                   src="/assets/settings.96eab642.svg"
                   data-v-e9e2d909
                 />{" "}
-                Download APK
+                {getLanguage(LanguageKey.DOWNLOAD_APK)}
               </Link>
             </li>
           )}
@@ -346,7 +345,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/prescription.ca17684b.svg"
                 data-v-e9e2d909
               />{" "}
-              Rules
+              {getLanguage(LanguageKey.RULES)}
             </Link>
           </li>
 
@@ -364,7 +363,7 @@ const RightDrawer = ({ setShowRightDrawer }) => {
                 src="/assets/basic-ui.0ffbe6ac.svg"
                 data-v-e9e2d909
               />{" "}
-              {languageValue(valueByLanguage, LanguageKey.LOGOUT)}
+              {getLanguage(LanguageKey.LOGOUT)}
             </a>
           </li>
         </ul>

@@ -12,8 +12,11 @@ import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
 import MobileBetSlip from "./MobileBetSlip";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 export const Bookmaker = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const [teamProfit, setTeamProfit] = useState([]);
@@ -292,7 +295,7 @@ export const Bookmaker = ({ data }) => {
                                 data-v-5b111243
                               />
                               <span className="relative z-10" data-v-5b111243>
-                                CASHOUT{" "}
+                                {getLanguage(LanguageKey.CASHOUT)}{" "}
                                 {teamProfitForGame?.profit &&
                                   `(${teamProfitForGame.profit.toFixed(0)})`}
                               </span>
@@ -314,7 +317,7 @@ export const Bookmaker = ({ data }) => {
                                 data-v-5b111243
                               />
                               <span className="relative z-10" data-v-5b111243>
-                                Speed Cashout
+                                {getLanguage(LanguageKey.SPEED_CASHOUT)}
                               </span>
                             </button>
                           )}
@@ -329,11 +332,13 @@ export const Bookmaker = ({ data }) => {
                         data-v-5b111243
                       >
                         <span data-v-5b111243>
-                          Min: {game?.minLiabilityPerBet}
+                          {getLanguage(LanguageKey.MIN)}:{" "}
+                          {game?.minLiabilityPerBet}
                         </span>
                         <span className="space-x-1 mr-1" data-v-5b111243 />
                         <span data-v-5b111243>
-                          Max: {game?.maxLiabilityPerBet}
+                          {getLanguage(LanguageKey.MAX)}:{" "}
+                          {game?.maxLiabilityPerBet}
                         </span>
                         <span className="space-x-1" data-v-5b111243 />
                       </span>
@@ -473,7 +478,9 @@ export const Bookmaker = ({ data }) => {
                                       className="suspended-overlay text-xs min-w-[7.35rem] absolute text-[#cd5c5c] bg-[#dcdcdce8] h-[3.188rem] rounded-md text-center flex flex-col justify-center"
                                       data-v-ee2b582e
                                     >
-                                      <p data-v-ee2b582e>SUSPENDED</p>
+                                      <p data-v-ee2b582e>
+                                        {getLanguage(LanguageKey.SUSPENDED)}
+                                      </p>
                                     </div>
                                   )}
                                 </div>

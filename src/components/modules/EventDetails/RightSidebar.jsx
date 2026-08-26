@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import BetSlip from "./BetSlip";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const RightSidebar = () => {
+  const { getLanguage } = useLanguage();
   const { placeBetValues } = useSelector((state) => state.event);
   return (
     <div className="w-full md:w-1/3 hidden md:block h-full" data-v-8e891727>
@@ -17,7 +20,7 @@ const RightSidebar = () => {
                 data-v-8e891727
               >
                 <h3 className="text-base font-bold capitalize" data-v-8e891727>
-                  Bet Place
+                  {getLanguage(LanguageKey.PLACE_BET)}
                 </h3>
               </div>
               <div

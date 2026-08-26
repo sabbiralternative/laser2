@@ -11,8 +11,11 @@ import {
 import toast from "react-hot-toast";
 import Ladder from "../../modals/Ladder/Ladder";
 import MobileBetSlip from "./MobileBetSlip";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 export const Fancy = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const fancyData = data?.filter(
     (fancy) =>
       fancy.btype === "FANCY" &&
@@ -168,9 +171,13 @@ export const Fancy = ({ data }) => {
                     className="text-[0.625rem] py-1 text-start text-card-description ml-1"
                     data-v-5b111243
                   >
-                    <span data-v-5b111243>Min: 100</span>
+                    <span data-v-5b111243>
+                      {getLanguage(LanguageKey.MIN)}: 100
+                    </span>
                     <span className="space-x-1 mr-1" data-v-5b111243 />
-                    <span data-v-5b111243>Max: 100k</span>
+                    <span data-v-5b111243>
+                      {getLanguage(LanguageKey.MAX)}: 100k
+                    </span>
                     <span className="space-x-1" data-v-5b111243 />
                   </span>
                   <div
@@ -199,7 +206,7 @@ export const Fancy = ({ data }) => {
                       const pnl = pnlBySelection?.find(
                         (pnl) => pnl?.MarketId === game?.id,
                       );
-                      console.log(pnl);
+
                       return (
                         <Fragment key={game?.id}>
                           <div

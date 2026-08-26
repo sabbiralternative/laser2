@@ -12,8 +12,11 @@ import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
 import MobileBetSlip from "./MobileBetSlip";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 export const MatchOdds = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const [teamProfit, setTeamProfit] = useState([]);
@@ -291,7 +294,7 @@ export const MatchOdds = ({ data }) => {
                                 data-v-5b111243
                               />
                               <span className="relative z-10" data-v-5b111243>
-                                CASHOUT{" "}
+                                {getLanguage(LanguageKey.CASHOUT)}{" "}
                                 {teamProfitForGame?.profit &&
                                   `(${teamProfitForGame.profit.toFixed(0)})`}
                               </span>
@@ -313,7 +316,7 @@ export const MatchOdds = ({ data }) => {
                                 data-v-5b111243
                               />
                               <span className="relative z-10" data-v-5b111243>
-                                Speed Cashout
+                                {getLanguage(LanguageKey.SPEED_CASHOUT)}
                               </span>
                             </button>
                           )}
@@ -328,11 +331,13 @@ export const MatchOdds = ({ data }) => {
                         data-v-5b111243
                       >
                         <span data-v-5b111243>
-                          Min: {game?.minLiabilityPerBet}
+                          {getLanguage(LanguageKey.MIN)}:{" "}
+                          {game?.minLiabilityPerBet}
                         </span>
                         <span className="space-x-1 mr-1" data-v-5b111243 />
                         <span data-v-5b111243>
-                          Max: {game?.maxLiabilityPerBet}
+                          {getLanguage(LanguageKey.MAX)}:{" "}
+                          {game?.maxLiabilityPerBet}
                         </span>
                         <span className="space-x-1" data-v-5b111243 />
                       </span>
