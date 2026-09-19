@@ -44,8 +44,17 @@ const MainLayout = () => {
       className={`mx-auto h-[calc(var(--vh)_*_100)] overflow-y-auto ${theme === "dark" ? "theme-dark" : "theme-light"}`}
       data-v-app
     >
-      <meta name="description" content={Settings.metaDescription} />
-      <meta name="keywords" content={Settings.metaKeywords} />
+      {Settings.metaDescription && (
+        <meta name="description" content={Settings.metaDescription} />
+      )}
+      {Settings.metaKeywords && (
+        <meta name="keywords" content={Settings.metaKeywords} />
+      )}
+      {Settings.gscTag && (
+        <meta name="google-site-verification" content={Settings.gscTag} />
+      )}
+      {Settings.metaTitle && <title>{Settings.metaTitle}</title>}
+      <meta name="robots" content="index, follow" />
       <div
         className="min-h-screen w-full __overflow-y-auto h-[calc(var(--vh)_*_100)+66px]"
         data-v-c78ea7eb
